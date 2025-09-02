@@ -239,25 +239,140 @@ get_header();
         border: 2px solid #e8f0ef;
     }
     
-    @media (max-width: 768px) {
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .hero-section {
+            padding: 80px 0;
+        }
+        
         .hero-title {
-            font-size: 36px;
+            font-size: 42px;
+        }
+        
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 60px 0;
+        }
+        
+        .hero-section::before {
+            width: 80%;
+            right: -30%;
+        }
+        
+        .hero-title {
+            font-size: 32px;
+            padding: 0 10px;
         }
         
         .hero-subtitle {
             font-size: 20px;
+            margin-bottom: 20px;
         }
         
         .hero-text {
             font-size: 16px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-buttons .btn {
+            width: 90%;
+            max-width: 280px;
+        }
+        
+        .services-overview,
+        .welcome-section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            padding: 0 10px;
         }
         
         .services-grid {
             grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .service-card {
+            padding: 25px 20px;
         }
         
         .specialisms-list {
             grid-template-columns: 1fr;
+            margin: 30px 0;
+        }
+        
+        .trust-section {
+            padding: 40px 0;
+        }
+        
+        .trust-badges {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .trust-badge {
+            width: 90%;
+            max-width: 280px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-section {
+            padding: 40px 0;
+        }
+        
+        .hero-title {
+            font-size: 26px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+        }
+        
+        .hero-text {
+            font-size: 15px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+        }
+        
+        .service-card h3 {
+            font-size: 20px;
+        }
+        
+        .service-card p {
+            font-size: 14px;
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .welcome-text {
+            font-size: 15px;
+        }
+        
+        .trust-title {
+            font-size: 16px;
         }
     }
 </style>
