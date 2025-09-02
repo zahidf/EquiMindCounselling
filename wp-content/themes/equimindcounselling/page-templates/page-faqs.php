@@ -7,22 +7,47 @@ get_header();
 
 <style>
     .faqs-hero {
-        background: linear-gradient(135deg, #f0f7f5 0%, #e1ede9 100%);
-        padding: 80px 0;
+        background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
+        padding: 100px 0;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .faqs-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(91, 140, 133, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
     }
     
     .faqs-hero h1 {
-        font-size: 42px;
+        font-size: 48px;
         color: #1a2332;
         margin-bottom: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
     }
     
     .faqs-hero p {
-        font-size: 20px;
+        font-size: 24px;
         color: #5b8c85;
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
+        font-style: italic;
+        position: relative;
+        z-index: 1;
     }
     
     .faqs-main {

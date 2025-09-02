@@ -7,8 +7,8 @@ get_header();
 
 <style>
     .hypno-hero {
-        background: linear-gradient(135deg, #e8e3f5 0%, #d6c9e8 100%);
-        padding: 80px 0;
+        background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
+        padding: 100px 0;
         position: relative;
         overflow: hidden;
     }
@@ -16,18 +16,17 @@ get_header();
     .hypno-hero::before {
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(139, 91, 140, 0.1) 0%, transparent 70%);
-        animation: pulse 4s ease-in-out infinite;
+        top: -50%;
+        right: -10%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(91, 140, 133, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
     }
     
-    @keyframes pulse {
-        0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-        50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.1; }
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
     }
     
     .hypno-hero-content {
@@ -40,15 +39,18 @@ get_header();
     }
     
     .hypno-hero-content h1 {
-        font-size: 42px;
+        font-size: 48px;
         color: #1a2332;
         margin-bottom: 20px;
+        font-weight: 700;
+        line-height: 1.2;
     }
     
     .hypno-hero-content p {
-        font-size: 20px;
-        color: #6b5b8c;
+        font-size: 24px;
+        color: #5b8c85;
         line-height: 1.6;
+        font-style: italic;
     }
     
     .hypno-intro {

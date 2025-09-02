@@ -7,8 +7,8 @@ get_header();
 
 <style>
     .specialist-hero {
-        background: linear-gradient(135deg, #f5e6e0 0%, #e8d5ce 100%);
-        padding: 80px 0;
+        background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
+        padding: 100px 0;
         position: relative;
         overflow: hidden;
     }
@@ -16,11 +16,17 @@ get_header();
     .specialist-hero::before {
         content: '';
         position: absolute;
-        top: -20%;
+        top: -50%;
         right: -10%;
-        width: 40%;
-        height: 140%;
-        background: radial-gradient(circle, rgba(186, 135, 120, 0.1) 0%, transparent 70%);
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(91, 140, 133, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
     }
     
     .specialist-hero-content {
@@ -33,15 +39,18 @@ get_header();
     }
     
     .specialist-hero-content h1 {
-        font-size: 42px;
+        font-size: 48px;
         color: #1a2332;
         margin-bottom: 20px;
+        font-weight: 700;
+        line-height: 1.2;
     }
     
     .specialist-hero-content p {
-        font-size: 20px;
-        color: #7a6b65;
+        font-size: 24px;
+        color: #5b8c85;
         line-height: 1.6;
+        font-style: italic;
     }
     
     .specialist-areas {
