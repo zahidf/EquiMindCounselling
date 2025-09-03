@@ -251,28 +251,32 @@
             
             .main-navigation ul {
                 flex-direction: column;
-                padding: 60px 0 20px;
+                padding: 70px 20px 20px;
                 gap: 0;
+                margin: 0;
             }
             
             .main-navigation li {
-                border-bottom: 1px solid #f0f0f0;
+                border-bottom: 1px solid #f5f5f5;
+                margin: 0;
+                text-align: center;
             }
             
             .main-navigation li:last-child {
                 border-bottom: none;
-                margin-top: auto;
+                margin-top: 20px;
                 padding-top: 0;
                 border-top: none;
             }
             
             .main-navigation a {
                 font-size: 15px;
-                padding: 16px 20px;
+                padding: 16px 10px;
                 display: block;
                 transition: all 0.2s ease;
                 position: relative;
                 color: #2c3e50;
+                text-align: center;
             }
             
             .main-navigation a::after {
@@ -286,7 +290,7 @@
             .main-navigation li:last-child a {
                 background: #5b8c85;
                 color: white;
-                margin: 15px 20px;
+                margin: 0 15px;
                 padding: 12px 20px;
                 text-align: center;
                 border-radius: 25px;
@@ -341,7 +345,7 @@
             
             .main-navigation a {
                 font-size: 14px;
-                padding: 14px 18px;
+                padding: 14px 10px;
             }
         }
         
@@ -352,7 +356,8 @@
             }
             
             .main-navigation a {
-                padding: 13px 16px;
+                padding: 13px 10px;
+                font-size: 14px;
             }
         }
     </style>
