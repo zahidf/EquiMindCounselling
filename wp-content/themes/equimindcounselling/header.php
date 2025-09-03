@@ -234,12 +234,12 @@
             .main-navigation {
                 position: fixed;
                 top: 0;
-                right: -250px;
-                width: 250px;
+                right: -200px;
+                width: 200px;
                 height: 100vh;
                 background: #ffffff;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
+                box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+                transition: right 0.25s ease;
                 z-index: 1001;
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -249,57 +249,112 @@
                 right: 0;
             }
             
+            .main-navigation::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0) 100%);
+                pointer-events: none;
+                z-index: 1;
+            }
+            
             .main-navigation ul {
                 flex-direction: column;
-                padding: 70px 20px 20px;
+                padding: 65px 0 20px;
                 gap: 0;
                 margin: 0;
+                list-style: none;
             }
             
             .main-navigation li {
-                border-bottom: 1px solid #f5f5f5;
                 margin: 0;
-                text-align: center;
+                border: none;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .main-navigation li:first-child a {
+                border-top: 1px solid #f0f0f0;
+            }
+            
+            .main-navigation li:not(:last-child) a {
+                border-bottom: 1px solid #f0f0f0;
             }
             
             .main-navigation li:last-child {
-                border-bottom: none;
-                margin-top: 20px;
-                padding-top: 0;
-                border-top: none;
+                margin-top: auto;
+                padding: 15px;
+                border-top: 1px solid #f0f0f0;
+                background: #fafafa;
             }
             
             .main-navigation a {
-                font-size: 15px;
-                padding: 16px 10px;
-                display: block;
+                font-size: 14px;
+                padding: 14px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
                 transition: all 0.2s ease;
                 position: relative;
                 color: #2c3e50;
-                text-align: center;
+                text-decoration: none;
+                font-weight: 400;
+                letter-spacing: 0.2px;
             }
             
             .main-navigation a::after {
                 display: none;
             }
             
+            .main-navigation a::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 3px;
+                height: 0;
+                background: #5b8c85;
+                transition: height 0.2s ease;
+            }
+            
+            .main-navigation a:hover::before,
+            .main-navigation a:active::before {
+                height: 60%;
+            }
+            
             .main-navigation a:active {
                 background-color: #f8fafa;
+                padding-left: 25px;
             }
             
             .main-navigation li:last-child a {
                 background: #5b8c85;
                 color: white;
-                margin: 0 15px;
-                padding: 12px 20px;
+                padding: 11px 20px;
                 text-align: center;
-                border-radius: 25px;
+                justify-content: center;
+                border-radius: 22px;
                 font-weight: 500;
-                font-size: 14px;
+                font-size: 13px;
+                border: none;
+            }
+            
+            .main-navigation li:last-child a::before {
+                display: none;
+            }
+            
+            .main-navigation li:last-child a:hover {
+                background: #4a7268;
             }
             
             .main-navigation li:last-child a:active {
-                background: #4a7268;
+                background: #3a5c58;
+                padding: 11px 20px;
+                transform: scale(0.98);
             }
             
             .mobile-overlay {
@@ -339,25 +394,43 @@
             }
             
             .main-navigation {
-                width: 220px;
-                right: -220px;
+                width: 180px;
+                right: -180px;
             }
             
             .main-navigation a {
-                font-size: 14px;
-                padding: 14px 10px;
+                font-size: 13px;
+                padding: 13px 18px;
+            }
+            
+            .main-navigation li:last-child {
+                padding: 12px;
+            }
+            
+            .main-navigation li:last-child a {
+                padding: 10px 18px;
+                font-size: 12px;
             }
         }
         
         @media (max-width: 375px) {
             .main-navigation {
-                width: 200px;
-                right: -200px;
+                width: 170px;
+                right: -170px;
             }
             
             .main-navigation a {
-                padding: 13px 10px;
-                font-size: 14px;
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+            
+            .main-navigation li:last-child {
+                padding: 10px;
+            }
+            
+            .main-navigation li:last-child a {
+                padding: 9px 16px;
+                font-size: 12px;
             }
         }
     </style>
