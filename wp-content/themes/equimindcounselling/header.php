@@ -263,10 +263,11 @@
             
             .main-navigation ul {
                 flex-direction: column;
-                padding: 65px 0 20px;
+                padding: 65px 0 0;
                 gap: 0;
                 margin: 0;
                 list-style: none;
+                height: 100%;
             }
             
             .main-navigation li {
@@ -286,9 +287,8 @@
             
             .main-navigation li:last-child {
                 margin-top: auto;
-                padding: 15px;
-                border-top: 1px solid #f0f0f0;
-                background: #fafafa;
+                margin-bottom: 20px;
+                padding: 0 15px;
             }
             
             .main-navigation a {
@@ -404,7 +404,8 @@
             }
             
             .main-navigation li:last-child {
-                padding: 12px;
+                padding: 0 12px;
+                margin-bottom: 15px;
             }
             
             .main-navigation li:last-child a {
@@ -425,7 +426,8 @@
             }
             
             .main-navigation li:last-child {
-                padding: 10px;
+                padding: 0 10px;
+                margin-bottom: 15px;
             }
             
             .main-navigation li:last-child a {
