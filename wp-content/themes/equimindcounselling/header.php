@@ -294,9 +294,8 @@
             .main-navigation a {
                 font-size: 14px;
                 padding: 14px 20px;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
+                display: block;
+                text-align: center;
                 transition: all 0.2s ease;
                 position: relative;
                 color: #2c3e50;
@@ -309,26 +308,13 @@
                 display: none;
             }
             
-            .main-navigation a::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 3px;
-                height: 0;
-                background: #5b8c85;
-                transition: height 0.2s ease;
-            }
-            
-            .main-navigation a:hover::before,
-            .main-navigation a:active::before {
-                height: 60%;
+            .main-navigation a:hover {
+                background-color: #f8fafa;
+                color: #5b8c85;
             }
             
             .main-navigation a:active {
-                background-color: #f8fafa;
-                padding-left: 25px;
+                background-color: #ecf5f3;
             }
             
             .main-navigation li:last-child a {
@@ -336,24 +322,19 @@
                 color: white;
                 padding: 11px 20px;
                 text-align: center;
-                justify-content: center;
                 border-radius: 22px;
                 font-weight: 500;
                 font-size: 13px;
                 border: none;
             }
             
-            .main-navigation li:last-child a::before {
-                display: none;
-            }
-            
             .main-navigation li:last-child a:hover {
                 background: #4a7268;
+                color: white;
             }
             
             .main-navigation li:last-child a:active {
                 background: #3a5c58;
-                padding: 11px 20px;
                 transform: scale(0.98);
             }
             
