@@ -129,11 +129,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
             z-index: 1002;
             position: relative;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             justify-content: center;
             align-items: center;
             transition: opacity 0.3s ease;
@@ -145,16 +145,31 @@
         
         .mobile-menu-toggle span {
             display: block;
-            width: 20px;
+            width: 22px;
             height: 2px;
             background-color: #2c3e50;
-            margin: 4px auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             transition: all 0.3s ease;
-            transform-origin: center;
+        }
+        
+        .mobile-menu-toggle span:nth-child(1) {
+            top: 11px;
+        }
+        
+        .mobile-menu-toggle span:nth-child(2) {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        
+        .mobile-menu-toggle span:nth-child(3) {
+            bottom: 11px;
         }
         
         .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translateY(6px);
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
         
         .mobile-menu-toggle.active span:nth-child(2) {
@@ -162,7 +177,8 @@
         }
         
         .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-6px);
+            bottom: 50%;
+            transform: translateX(-50%) translateY(50%) rotate(-45deg);
         }
         
         .mobile-menu-header {
@@ -218,9 +234,8 @@
             .main-navigation {
                 position: fixed;
                 top: 0;
-                right: -100%;
-                width: 70%;
-                max-width: 280px;
+                right: -250px;
+                width: 250px;
                 height: 100vh;
                 background: #ffffff;
                 box-shadow: -2px 0 10px rgba(0,0,0,0.1);
@@ -320,7 +335,24 @@
             }
             
             .main-navigation {
-                width: 75%;
+                width: 220px;
+                right: -220px;
+            }
+            
+            .main-navigation a {
+                font-size: 14px;
+                padding: 14px 18px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .main-navigation {
+                width: 200px;
+                right: -200px;
+            }
+            
+            .main-navigation a {
+                padding: 13px 16px;
             }
         }
     </style>
@@ -336,7 +368,7 @@
             </a>
         </div>
         
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-navigation">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-navigation" type="button">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
