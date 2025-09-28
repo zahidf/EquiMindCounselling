@@ -7,7 +7,8 @@ get_header();
 
 <style>
     .services-hero {
-        background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
+        background: linear-gradient(135deg, rgba(236, 245, 243, 0.9) 0%, rgba(212, 232, 228, 0.9) 100%),
+                    url('/wp-includes/images/hero-services.png') center center / cover no-repeat;
         padding: 100px 0;
         text-align: center;
         position: relative;
