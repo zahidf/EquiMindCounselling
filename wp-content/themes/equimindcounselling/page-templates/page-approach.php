@@ -441,6 +441,56 @@ get_header();
         font-weight: bold;
     }
     
+    .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .btn-white {
+        background-color: #ffffff;
+        color: #1a2332;
+        padding: 14px 32px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border: 2px solid #ffffff;
+    }
+    
+    .btn-white:hover {
+        background-color: #f9fbfa;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        color: #5b8c85;
+    }
+    
+    .btn-outline-white {
+        background-color: transparent;
+        color: #ffffff;
+        padding: 14px 32px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        border: 2px solid #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-outline-white:hover {
+        background-color: #ffffff;
+        color: #5b8c85;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+    
     @media (max-width: 768px) {
         .modalities-grid {
             grid-template-columns: 1fr;
@@ -461,6 +511,18 @@ get_header();
         
         .approach-hero h1 {
             font-size: 32px;
+        }
+        
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn-white,
+        .btn-outline-white {
+            width: 250px;
+            text-align: center;
         }
     }
 </style>
