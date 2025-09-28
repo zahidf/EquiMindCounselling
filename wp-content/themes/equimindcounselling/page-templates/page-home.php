@@ -49,9 +49,11 @@ get_header();
     
     .hero-subtitle {
         font-size: 24px;
-        color: #5b8c85;
+        color: #1a2332;
         margin-bottom: 30px;
         font-style: italic;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
     }
     
     .hero-text {

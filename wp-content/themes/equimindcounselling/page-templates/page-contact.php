@@ -43,12 +43,14 @@ get_header();
     
     .contact-hero p {
         font-size: 24px;
-        color: #5b8c85;
+        color: #1a2332;
         max-width: 800px;
         margin: 0 auto;
         font-style: italic;
         position: relative;
         z-index: 1;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
     }
     
     .contact-main {

@@ -43,12 +43,14 @@ get_header();
     
     .about-hero p {
         font-size: 24px;
-        color: #5b8c85;
+        color: #1a2332;
         max-width: 800px;
         margin: 0 auto;
         position: relative;
         z-index: 1;
         font-style: italic;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
     }
     
     .about-content {

@@ -51,11 +51,13 @@ get_header();
     
     .approach-hero p {
         font-size: 24px;
-        color: #5b8c85;
+        color: #1a2332;
         line-height: 1.6;
         font-style: italic;
         position: relative;
         z-index: 1;
+        font-weight: 500;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
     }
     
     .philosophy-section {
