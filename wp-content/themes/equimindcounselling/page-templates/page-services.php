@@ -357,7 +357,7 @@ get_header();
     <section class="services-hero">
         <div class="container">
             <h1>Professional Therapy Services</h1>
-            <p>Comprehensive support for adults, children, and families through evidence-based therapeutic approaches</p>
+            <p>Comprehensive support for adults, children, and young people through evidence-based therapeutic approaches</p>
         </div>
     </section>
     
@@ -366,7 +366,7 @@ get_header();
             <div class="services-intro">
                 <p>
                     Every individual's journey is unique. I offer a range of therapeutic services tailored to meet 
-                    your specific needs, whether you're seeking support for yourself, your child, or your family. 
+                    your specific needs, whether you're seeking support for yourself or your child. 
                     All services are provided with cultural sensitivity, trauma-informed care, and a commitment to 
                     your wellbeing.
                 </p>
@@ -421,7 +421,7 @@ get_header();
                     <div class="service-header">
                         <div class="service-icon-large">🌱</div>
                         <div class="service-title-section">
-                            <h2>Child & Adolescent Therapy</h2>
+                            <h2>Therapy with Children and Young People</h2>
                             <p class="service-subtitle">Developmentally appropriate support for young people</p>
                         </div>
                     </div>
@@ -437,7 +437,6 @@ get_header();
                         <ul class="feature-list">
                             <li>Age-appropriate interventions</li>
                             <li>Creative and play-based techniques</li>
-                            <li>Collaboration with parents/carers</li>
                             <li>School-related challenges support</li>
                             <li>Emotional regulation skills</li>
                             <li>Building resilience and confidence</li>
@@ -575,7 +574,7 @@ get_header();
                 </div>
                 
                 <div class="specialist-card">
-                    <h3>Domestic Abuse Recovery</h3>
+                    <h3>Domestic Abuse</h3>
                     <p>
                         Trauma-informed support for survivors of domestic abuse. Working at your pace, we focus 
                         on safety, rebuilding autonomy, processing trauma, and developing strategies for healing 

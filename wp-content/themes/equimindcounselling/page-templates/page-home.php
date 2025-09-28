@@ -385,7 +385,7 @@ get_header();
             <p class="hero-text">
                 Life's challenges can feel overwhelming, isolating, and confusing. At EquiMind Counselling, 
                 I offer a compassionate, culturally informed, and trauma-sensitive approach to therapy for 
-                adults, young people, and families. Whether you're struggling with anxiety, grief, relationship 
+                adults and young people. Whether you're struggling with anxiety, grief, relationship 
                 challenges, or identity concerns, I'm here to help you find clarity, strength, and new possibilities.
             </p>
             <div class="hero-buttons">
@@ -408,7 +408,7 @@ get_header();
             <h3 style="margin: 40px 0 20px; color: #1a2332;">Specialisms Include:</h3>
             <ul class="specialisms-list">
                 <li>Anxiety, depression, and stress management</li>
-                <li>Bereavement and baby loss</li>
+                <li>Bereavement and processing domestic abuse</li>
                 <li>Cultural identity and racial trauma</li>
                 <li>Relationship and family challenges</li>
                 <li>Trauma recovery</li>
@@ -430,8 +430,8 @@ get_header();
                 
                 <div class="service-card">
                     <div class="service-icon">🌱</div>
-                    <h3>Child & Adolescent Support</h3>
-                    <p>Collaborative, holistic work with children and young people. Creative approaches to build resilience and emotional expression.</p>
+                    <h3>Children & Young People</h3>
+                    <p>Collaborative work with children (8 years and up) and young people. Creative approaches to build resilience and emotional expression.</p>
                     <a href="<?php echo esc_url(home_url('/child-therapy')); ?>" class="service-link">Learn more →</a>
                 </div>
                 

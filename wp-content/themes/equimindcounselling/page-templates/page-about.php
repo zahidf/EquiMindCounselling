@@ -302,7 +302,7 @@ get_header();
                 <div class="profile-info">
                     <h3>Professional Memberships</h3>
                     <p><strong>NCPS</strong> - Accredited Member</p>
-                    <p><strong>Certified Hypnotherapist</strong></p>
+                    <p><strong>Psychotherapist</strong></p>
                     <p><strong>Trauma-Informed Practitioner</strong></p>
                 </div>
             </aside>
@@ -393,7 +393,7 @@ get_header();
             <p>
                 I am mindful of the value and strength found in cultural heritage — from strong family bonds to 
                 community support — and my aim is to work in a way that respects and preserves these connections. 
-                My approach is not about creating distance or conflict, but about helping clients find ways to 
+                My approach is about helping clients find ways to 
                 communicate, understand, and live authentically within the relationships and traditions that matter to them.
             </p>
             

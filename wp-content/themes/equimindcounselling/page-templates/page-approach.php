@@ -478,7 +478,7 @@ get_header();
             <div class="philosophy-intro">
                 <h2>Philosophy of Healing</h2>
                 <p>
-                    I believe that you are the expert on your own life. My role is to provide a safe, 
+                    I believe that you are the expert in your own life. My role is to provide a safe, 
                     supportive space where you can explore your thoughts and feelings, gain new insights, 
                     and discover your own path to healing. Therapy is a collaborative journey where your 
                     voice, choices, and pace are always respected.
@@ -489,23 +489,6 @@ get_header();
     
     <section class="modalities-section">
         <div class="modalities-grid">
-            <div class="modality-card">
-                <div class="modality-icon">❤️</div>
-                <h3>Person-Centred Therapy</h3>
-                <p class="modality-subtitle">You lead the way</p>
-                <p>
-                    This approach places you at the center of the therapeutic process. I provide 
-                    unconditional positive regard, empathy, and genuineness, creating a space where 
-                    you feel safe to explore and express yourself authentically.
-                </p>
-                <ul class="modality-techniques">
-                    <li>Non-directive exploration</li>
-                    <li>Unconditional acceptance</li>
-                    <li>Empathetic understanding</li>
-                    <li>Self-directed growth</li>
-                </ul>
-            </div>
-            
             <div class="modality-card">
                 <div class="modality-icon">🔍</div>
                 <h3>Psychodynamic Therapy</h3>
@@ -524,6 +507,23 @@ get_header();
             </div>
             
             <div class="modality-card">
+                <div class="modality-icon">❤️</div>
+                <h3>Person-Centred Therapy</h3>
+                <p class="modality-subtitle">You lead the way</p>
+                <p>
+                    This approach places you at the center of the therapeutic process. I provide 
+                    unconditional positive regard, empathy, and genuineness, creating a space where 
+                    you feel safe to explore and express yourself authentically.
+                </p>
+                <ul class="modality-techniques">
+                    <li>Non-directive exploration</li>
+                    <li>Unconditional acceptance</li>
+                    <li>Empathetic understanding</li>
+                    <li>Self-directed growth</li>
+                </ul>
+            </div>
+            
+            <div class="modality-card">
                 <div class="modality-icon">🧠</div>
                 <h3>Cognitive Behavioural Therapy</h3>
                 <p class="modality-subtitle">Practical tools for change</p>
@@ -537,23 +537,6 @@ get_header();
                     <li>Behavioral activation</li>
                     <li>Problem-solving strategies</li>
                     <li>Coping skills development</li>
-                </ul>
-            </div>
-            
-            <div class="modality-card">
-                <div class="modality-icon">🎨</div>
-                <h3>Creative & Expressive Methods</h3>
-                <p class="modality-subtitle">Beyond words</p>
-                <p>
-                    Sometimes feelings are hard to put into words. Creative approaches like art, 
-                    writing, imagery, and metaphor can help express and process emotions in 
-                    different ways, particularly helpful for trauma and complex feelings.
-                </p>
-                <ul class="modality-techniques">
-                    <li>Art and drawing exercises</li>
-                    <li>Guided imagery</li>
-                    <li>Metaphor and storytelling</li>
-                    <li>Expressive writing</li>
                 </ul>
             </div>
             
@@ -630,7 +613,7 @@ get_header();
                 <div class="value-card">
                     <div class="value-icon">🌍</div>
                     <h3>Culturally Sensitive</h3>
-                    <p>Honoring and integrating your cultural background, values, and lived experiences.</p>
+                    <p>Honoring and integrating your unique lived experience.</p>
                 </div>
                 
                 <div class="value-card">
@@ -664,44 +647,6 @@ get_header();
         <div class="process-content">
             <h2>What to Expect</h2>
             
-            <div class="session-flow">
-                <h3>Your Therapy Journey</h3>
-                
-                <div class="flow-step" data-step="1">
-                    <div>
-                        <h4>Initial Contact</h4>
-                        <p>Free 15-minute consultation to discuss your needs and see if we're a good fit.</p>
-                    </div>
-                </div>
-                
-                <div class="flow-step" data-step="2">
-                    <div>
-                        <h4>Assessment Sessions</h4>
-                        <p>First few sessions to understand your history, current challenges, and therapy goals.</p>
-                    </div>
-                </div>
-                
-                <div class="flow-step" data-step="3">
-                    <div>
-                        <h4>Collaborative Planning</h4>
-                        <p>Together we identify focus areas and discuss which approaches might be most helpful.</p>
-                    </div>
-                </div>
-                
-                <div class="flow-step" data-step="4">
-                    <div>
-                        <h4>Ongoing Therapy</h4>
-                        <p>Regular sessions where we work through your concerns at your pace.</p>
-                    </div>
-                </div>
-                
-                <div class="flow-step" data-step="5">
-                    <div>
-                        <h4>Review & Adjust</h4>
-                        <p>Regular check-ins to ensure therapy is meeting your needs and adjust as necessary.</p>
-                    </div>
-                </div>
-            </div>
             
             <div class="expectations-grid">
                 <div class="expectation-box">

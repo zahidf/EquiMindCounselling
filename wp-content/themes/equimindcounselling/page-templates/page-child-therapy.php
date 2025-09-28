@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Child & Adolescent Therapy
+Template Name: Therapy with Children and Young People
 */
 get_header();
 ?>
@@ -399,10 +399,10 @@ get_header();
 <main id="primary" class="site-main">
     <section class="child-therapy-hero">
         <div class="child-hero-content">
-            <h1>Child & Adolescent Therapy</h1>
+            <h1>Therapy with Children and Young People</h1>
             <p>Supporting young people to navigate emotions, build resilience, and thrive</p>
             <div class="age-badges">
-                <span class="age-badge">Ages 5-11</span>
+                <span class="age-badge">Ages 8-12</span>
                 <span class="age-badge">Ages 12-17</span>
                 <span class="age-badge">Young Adults 18+</span>
             </div>
@@ -491,11 +491,6 @@ get_header();
             </div>
             
             <div class="technique-item">
-                <h4><span class="technique-icon">🎮</span> Play Therapy</h4>
-                <p>Using toys, games, and imaginative play to explore experiences and emotions</p>
-            </div>
-            
-            <div class="technique-item">
                 <h4><span class="technique-icon">📖</span> Storytelling</h4>
                 <p>Stories and metaphors to help understand feelings and learn coping strategies</p>
             </div>
@@ -505,79 +500,38 @@ get_header();
                 <p>Age-appropriate conversations for older children and teens who prefer verbal expression</p>
             </div>
             
-            <div class="technique-item">
-                <h4><span class="technique-icon">🧘</span> Mindfulness</h4>
-                <p>Simple breathing exercises and grounding techniques for managing anxiety</p>
-            </div>
-            
-            <div class="technique-item">
-                <h4><span class="technique-icon">🎯</span> CBT Techniques</h4>
-                <p>Practical tools to challenge unhelpful thoughts and develop positive behaviors</p>
-            </div>
         </div>
     </section>
     
-    <section class="parent-involvement">
-        <div class="parent-content">
-            <h2>Working Together with Parents & Carers</h2>
-            
-            <div class="parent-info">
-                <h3>Your Role in Your Child's Therapy Journey</h3>
-                <p>
-                    Parents and carers play a crucial role in supporting young people's emotional wellbeing. 
-                    I believe in working collaboratively with families to ensure the best outcomes for your child.
-                </p>
-                
-                <ul class="parent-list">
-                    <li>Initial consultation to understand your concerns and goals</li>
-                    <li>Regular updates on progress (with your child's consent where appropriate)</li>
-                    <li>Strategies and tools you can use at home</li>
-                    <li>Support in understanding your child's emotional needs</li>
-                    <li>Guidance on how to respond to challenging behaviors</li>
-                </ul>
-                
-                <p>
-                    <strong>Confidentiality:</strong> While I work closely with parents, it's important that young 
-                    people feel they have a safe, private space. I'll discuss confidentiality boundaries with both 
-                    you and your child, ensuring everyone understands when information needs to be shared.
-                </p>
-            </div>
-        </div>
-    </section>
     
     <section class="age-specific">
         <div class="age-tabs">
             <h2>Age-Specific Approaches</h2>
             
             <div class="tab-buttons">
-                <button class="tab-button active" onclick="showTab('children')">Children (5-11)</button>
+                <button class="tab-button active" onclick="showTab('children')">Children (8-12)</button>
                 <button class="tab-button" onclick="showTab('adolescents')">Adolescents (12-17)</button>
                 <button class="tab-button" onclick="showTab('young-adults')">Young Adults (18+)</button>
             </div>
             
             <div id="children" class="tab-content active">
-                <h3>Working with Children (5-11 years)</h3>
+                <h3>Working with Children (8-12 years)</h3>
                 <p>
-                    Younger children often express themselves best through play and creative activities. Sessions 
-                    are structured to be fun and engaging while addressing therapeutic goals. I use toys, art 
-                    materials, and games to help children explore their feelings in a non-threatening way.
+                    Children often express themselves best through creative activities. Sessions 
+                    are structured to be engaging while addressing therapeutic goals.
                 </p>
                 <div class="tab-features">
                     <div class="tab-feature">
                         <span class="feature-dot"></span>
-                        30-40 minute sessions to match attention spans
+                        Session time appropriate for age
                     </div>
                     <div class="tab-feature">
                         <span class="feature-dot"></span>
-                        Heavy use of play and creative techniques
+                        Use of creative techniques
                     </div>
                     <div class="tab-feature">
                         <span class="feature-dot"></span>
-                        Regular parent involvement and updates
-                    </div>
-                    <div class="tab-feature">
-                        <span class="feature-dot"></span>
-                        Focus on emotional literacy and expression
+                        Focus on emotional literacy
                     </div>
                 </div>
             </div>

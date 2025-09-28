@@ -574,7 +574,7 @@ get_header();
                 <div class="area-header">
                     <div class="area-icon-large">💜</div>
                     <div class="area-intro">
-                        <h2>Domestic Abuse Recovery</h2>
+                        <h2>Domestic Abuse</h2>
                         <p>Trauma-informed support for survivors on the path to healing and empowerment</p>
                     </div>
                 </div>
@@ -666,7 +666,43 @@ get_header();
                 <div class="principle">
                     <div class="principle-icon">🤝</div>
                     <h4>Collaborative</h4>
-                    <p>You are the expert on your own life</p>
+                    <p>You are the expert in your own life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="supervision-section" style="background-color: #f9fbfa; padding: 80px 0;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="text-align: center; color: #1a2332; font-size: 32px; margin-bottom: 40px;">Clinical Supervision</h2>
+            
+            <div style="background-color: white; padding: 50px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                <p style="color: #2c3e50; line-height: 1.8; margin-bottom: 25px; font-size: 16px;">
+                    Alongside my counselling practice, I also offer supervision for both individuals and groups. 
+                    I believe supervision should be a collaborative, supportive, and reflective space where we can 
+                    explore your practice, celebrate strengths, and work through challenges.
+                </p>
+                
+                <p style="color: #2c3e50; line-height: 1.8; margin-bottom: 25px; font-size: 16px;">
+                    I adapt my approach to suit your needs, drawing on different models to guide our work together. 
+                    This includes the Functional Model, which supports the professional, restorative, and developmental 
+                    aspects of your practice, and the 7-Eyed Model, which brings a wider systemic and relational lens 
+                    to supervision.
+                </p>
+                
+                <p style="color: #2c3e50; line-height: 1.8; margin-bottom: 30px; font-size: 16px;">
+                    Whether you're looking for one-to-one supervision or a group setting, my aim is to create a safe 
+                    and thoughtful space that helps you grow in confidence, develop your skills, and maintain ethical, 
+                    grounded practice.
+                </p>
+                
+                <div style="background-color: #ecf5f3; padding: 25px; border-radius: 10px; margin-top: 30px;">
+                    <h3 style="color: #5b8c85; font-size: 20px; margin-bottom: 15px;">Supervision Sessions</h3>
+                    <p style="color: #1a2332; font-size: 18px; font-weight: 500; margin-bottom: 10px;">£80 for 90-minute session</p>
+                    <p style="color: #6c7983; font-size: 14px; line-height: 1.6;">
+                        I take your privacy and confidentiality seriously and work in line with the General Data Protection 
+                        Regulation (GDPR, 2018).
+                    </p>
                 </div>
             </div>
         </div>
