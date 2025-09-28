@@ -7,7 +7,7 @@ get_header();
 
 <style>
     .contact-hero {
-        background: linear-gradient(135deg, rgba(236, 245, 243, 0.3) 0%, rgba(212, 232, 228, 0.3) 100%),
+        background: linear-gradient(135deg, rgba(236, 245, 243, 0.7) 0%, rgba(212, 232, 228, 0.7) 100%),
                     url('/wp-includes/images/hero-contact.png') center center / cover no-repeat;
         padding: 100px 0;
         text-align: center;
