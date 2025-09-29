@@ -204,192 +204,40 @@ get_header();
         box-shadow: 0 15px 40px rgba(91, 140, 133, 0.2);
     }
 
-    /* Tree of Life Container */
-    .tree-container {
-        width: 260px;
-        height: 360px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Tree SVG Styles */
-    .tree-svg {
+    /* Interactive Canvas Tree Styles */
+    #treeCanvas {
         width: 100%;
-        height: 100%;
+        height: 350px;
+        cursor: crosshair;
+        border-radius: 10px;
     }
 
-    /* Tree animations - Sequential Build from Bottom to Top */
-    @keyframes drawPath {
-        to {
-            stroke-dashoffset: 0;
-        }
+    .tree-hint {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #5b8c85;
+        font-size: 12px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        animation-delay: 2s;
+        text-align: center;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 5px 10px;
+        border-radius: 15px;
     }
 
+    .tree-of-life-container:hover .tree-hint {
+        opacity: 0.8;
+    }
+
+    /* Basic fadeIn animation for tree hint */
     @keyframes fadeIn {
         to {
             opacity: 1;
         }
-    }
-
-    @keyframes growUp {
-        0% {
-            transform: scaleY(0);
-            opacity: 0;
-        }
-        100% {
-            transform: scaleY(1);
-            opacity: 1;
-        }
-    }
-
-    @keyframes growLeaf {
-        0% {
-            transform: scale(0);
-            opacity: 0;
-        }
-        60% {
-            transform: scale(1.15);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    @keyframes gentleSway {
-        0%, 100% {
-            transform: translateX(0) rotate(0deg) scale(1);
-        }
-        25% {
-            transform: translateX(-2px) rotate(-1deg) scale(1);
-        }
-        75% {
-            transform: translateX(2px) rotate(1deg) scale(1);
-        }
-    }
-
-    @keyframes glowPulse {
-        0%, 100% {
-            opacity: 0.3;
-            transform: scale(1);
-            filter: blur(0px);
-        }
-        50% {
-            opacity: 0.8;
-            transform: scale(1.3);
-            filter: blur(2px);
-        }
-    }
-
-    /* Tree SVG element animations - Sequential from Bottom to Top */
-
-    /* 1. Roots appear first (from bottom) */
-    .tree-roots path {
-        stroke-dasharray: 120;
-        stroke-dashoffset: 120;
-        opacity: 0;
-        animation: drawPath 0.8s ease-out forwards, fadeIn 0.8s ease-out forwards;
-    }
-
-    .root-1 { animation-delay: 0.1s; }
-    .root-2 { animation-delay: 0.2s; }
-    .root-3 { animation-delay: 0.3s; }
-    .root-4 { animation-delay: 0.4s; }
-    .root-5 { animation-delay: 0.5s; }
-
-    /* 2. Trunk grows upward */
-    .tree-trunk {
-        transform-origin: bottom center;
-        opacity: 0;
-        transform: scaleY(0);
-        animation: growUp 1.2s ease-out forwards;
-        animation-delay: 0.6s;
-    }
-
-    /* 3. Branches draw from trunk outward (bottom to top) */
-    .tree-branches path {
-        stroke-dasharray: 200;
-        stroke-dashoffset: 200;
-        opacity: 0;
-        animation: drawPath 0.6s ease-out forwards, fadeIn 0.6s ease-out forwards;
-    }
-
-    /* Lower branches first */
-    .branch-1 { animation-delay: 1.5s; }
-    .branch-5 { animation-delay: 1.6s; }
-
-    /* Middle-lower branches */
-    .branch-2 { animation-delay: 1.8s; }
-    .branch-6 { animation-delay: 1.9s; }
-
-    /* Middle-upper branches */
-    .branch-3 { animation-delay: 2.1s; }
-    .branch-7 { animation-delay: 2.2s; }
-
-    /* Upper branches */
-    .branch-4 { animation-delay: 2.4s; }
-    .branch-8 { animation-delay: 2.5s; }
-
-    /* Top branches */
-    .branch-9 { animation-delay: 2.7s; }
-    .branch-10 { animation-delay: 2.8s; }
-
-    /* 4. Leaves bloom from bottom to top */
-    .tree-leaves ellipse {
-        opacity: 0;
-        transform-origin: center bottom;
-        animation: growLeaf 0.6s ease-out forwards, gentleSway 4s ease-in-out infinite;
-    }
-
-    /* Bottom leaves */
-    .leaf-5 { animation-delay: 2.9s, 3.5s; }
-    .leaf-11 { animation-delay: 3.0s, 3.6s; }
-
-    /* Lower leaves */
-    .leaf-1 { animation-delay: 3.1s, 3.7s; }
-    .leaf-7 { animation-delay: 3.2s, 3.8s; }
-    .leaf-6 { animation-delay: 3.3s, 3.9s; }
-    .leaf-12 { animation-delay: 3.4s, 4.0s; }
-
-    /* Middle leaves */
-    .leaf-2 { animation-delay: 3.5s, 4.1s; }
-    .leaf-8 { animation-delay: 3.6s, 4.2s; }
-
-    /* Upper leaves */
-    .leaf-3 { animation-delay: 3.7s, 4.3s; }
-    .leaf-9 { animation-delay: 3.8s, 4.4s; }
-    .leaf-4 { animation-delay: 3.9s, 4.5s; }
-    .leaf-10 { animation-delay: 4.0s, 4.6s; }
-
-    /* Top leaves */
-    .leaf-16 { animation-delay: 4.1s, 4.7s; }
-    .leaf-17 { animation-delay: 4.2s, 4.8s; }
-    .leaf-13 { animation-delay: 4.3s, 4.9s; }
-    .leaf-14 { animation-delay: 4.4s, 5.0s; }
-    .leaf-15 { animation-delay: 4.5s, 5.1s; }
-
-    /* 5. Energy orbs appear last */
-    .tree-energy circle {
-        opacity: 0;
-        animation: glowPulse 3s ease-in-out infinite;
-    }
-
-    .orb-5 { animation-delay: 4.6s; }
-    .orb-6 { animation-delay: 4.7s; }
-    .orb-1 { animation-delay: 4.8s; }
-    .orb-2 { animation-delay: 4.9s; }
-    .orb-3 { animation-delay: 5.0s; }
-    .orb-4 { animation-delay: 5.1s; }
-
-    /* Hover effects */
-    .profile-image:hover .tree-leaves ellipse {
-        animation-duration: 0.6s, 2s;
-    }
-
-    .profile-image:hover .tree-energy circle {
-        animation-duration: 1.5s;
     }
 
     .profile-info {
@@ -740,74 +588,8 @@ get_header();
         <div class="about-container">
             <aside class="therapist-profile">
                 <div class="profile-image tree-of-life-container">
-                    <svg class="tree-of-life" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Roots -->
-                        <g class="tree-roots">
-                            <path d="M200 400 Q180 420 160 450" stroke="#8B7355" stroke-width="3" fill="none" class="root root-1"/>
-                            <path d="M200 400 Q200 420 190 450" stroke="#8B7355" stroke-width="2.5" fill="none" class="root root-2"/>
-                            <path d="M200 400 Q220 420 240 450" stroke="#8B7355" stroke-width="3" fill="none" class="root root-3"/>
-                            <path d="M200 400 Q180 430 150 460" stroke="#8B7355" stroke-width="2" fill="none" class="root root-4"/>
-                            <path d="M200 400 Q220 430 250 460" stroke="#8B7355" stroke-width="2" fill="none" class="root root-5"/>
-                        </g>
-
-                        <!-- Trunk -->
-                        <rect x="185" y="200" width="30" height="200" fill="#8B7355" class="tree-trunk"/>
-
-                        <!-- Main Branches -->
-                        <g class="tree-branches">
-                            <!-- Left branches -->
-                            <path d="M190 300 Q150 280 120 260" stroke="#8B7355" stroke-width="4" fill="none" class="branch branch-1"/>
-                            <path d="M185 250 Q140 230 100 200" stroke="#8B7355" stroke-width="3.5" fill="none" class="branch branch-2"/>
-                            <path d="M185 200 Q150 180 120 150" stroke="#8B7355" stroke-width="3" fill="none" class="branch branch-3"/>
-                            <path d="M190 150 Q160 130 140 100" stroke="#8B7355" stroke-width="2.5" fill="none" class="branch branch-4"/>
-
-                            <!-- Right branches -->
-                            <path d="M210 300 Q250 280 280 260" stroke="#8B7355" stroke-width="4" fill="none" class="branch branch-5"/>
-                            <path d="M215 250 Q260 230 300 200" stroke="#8B7355" stroke-width="3.5" fill="none" class="branch branch-6"/>
-                            <path d="M215 200 Q250 180 280 150" stroke="#8B7355" stroke-width="3" fill="none" class="branch branch-7"/>
-                            <path d="M210 150 Q240 130 260 100" stroke="#8B7355" stroke-width="2.5" fill="none" class="branch branch-8"/>
-
-                            <!-- Top branches -->
-                            <path d="M200 150 Q200 120 190 90" stroke="#8B7355" stroke-width="2" fill="none" class="branch branch-9"/>
-                            <path d="M200 150 Q200 120 210 90" stroke="#8B7355" stroke-width="2" fill="none" class="branch branch-10"/>
-                        </g>
-
-                        <!-- Leaves -->
-                        <g class="tree-leaves">
-                            <!-- Left side leaves -->
-                            <ellipse cx="120" cy="260" rx="15" ry="20" fill="#228B22" class="leaf leaf-1"/>
-                            <ellipse cx="100" cy="200" rx="18" ry="22" fill="#32CD32" class="leaf leaf-2"/>
-                            <ellipse cx="120" cy="150" rx="16" ry="21" fill="#228B22" class="leaf leaf-3"/>
-                            <ellipse cx="140" cy="100" rx="14" ry="19" fill="#32CD32" class="leaf leaf-4"/>
-                            <ellipse cx="110" cy="280" rx="12" ry="16" fill="#3CB371" class="leaf leaf-5"/>
-                            <ellipse cx="130" cy="240" rx="13" ry="17" fill="#2E8B57" class="leaf leaf-6"/>
-
-                            <!-- Right side leaves -->
-                            <ellipse cx="280" cy="260" rx="15" ry="20" fill="#228B22" class="leaf leaf-7"/>
-                            <ellipse cx="300" cy="200" rx="18" ry="22" fill="#32CD32" class="leaf leaf-8"/>
-                            <ellipse cx="280" cy="150" rx="16" ry="21" fill="#228B22" class="leaf leaf-9"/>
-                            <ellipse cx="260" cy="100" rx="14" ry="19" fill="#32CD32" class="leaf leaf-10"/>
-                            <ellipse cx="290" cy="280" rx="12" ry="16" fill="#3CB371" class="leaf leaf-11"/>
-                            <ellipse cx="270" cy="240" rx="13" ry="17" fill="#2E8B57" class="leaf leaf-12"/>
-
-                            <!-- Top leaves -->
-                            <ellipse cx="190" cy="90" rx="15" ry="20" fill="#228B22" class="leaf leaf-13"/>
-                            <ellipse cx="210" cy="90" rx="15" ry="20" fill="#32CD32" class="leaf leaf-14"/>
-                            <ellipse cx="200" cy="70" rx="17" ry="22" fill="#3CB371" class="leaf leaf-15"/>
-                            <ellipse cx="180" cy="110" rx="12" ry="16" fill="#2E8B57" class="leaf leaf-16"/>
-                            <ellipse cx="220" cy="110" rx="12" ry="16" fill="#228B22" class="leaf leaf-17"/>
-                        </g>
-
-                        <!-- Energy Orbs -->
-                        <g class="tree-energy">
-                            <circle cx="200" cy="250" r="5" fill="#FFD700" opacity="0.8" class="energy-orb orb-1"/>
-                            <circle cx="150" cy="200" r="4" fill="#FFA500" opacity="0.7" class="energy-orb orb-2"/>
-                            <circle cx="250" cy="200" r="4" fill="#FFD700" opacity="0.7" class="energy-orb orb-3"/>
-                            <circle cx="200" cy="150" r="6" fill="#FFA500" opacity="0.8" class="energy-orb orb-4"/>
-                            <circle cx="180" cy="300" r="3" fill="#FFD700" opacity="0.6" class="energy-orb orb-5"/>
-                            <circle cx="220" cy="300" r="3" fill="#FFA500" opacity="0.6" class="energy-orb orb-6"/>
-                        </g>
-                    </svg>
+                    <canvas id="treeCanvas"></canvas>
+                    <div class="tree-hint">Move your mouse to see the tree respond</div>
                 </div>
                 <div class="profile-info">
                     <h3>Professional Memberships</h3>
@@ -1231,6 +1013,168 @@ get_header();
             }, { threshold: 0.5 });
 
             badgeObserver.observe(heroBadge);
+        }
+
+        // Interactive Canvas Tree Animation
+        const canvas = document.getElementById('treeCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+
+            // Set canvas size
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            // Tree parameters
+            let iterations = 1;
+            let maxIterations = 7;
+            let angleOfExpL = Math.PI / 6;
+            let angleOfExpR = Math.PI / 3;
+            let param = 0;
+            let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+            let isGrowing = true;
+
+            // Therapeutic colors (calming greens and earthy tones)
+            const colors = ["5b8c85", "6b9b94", "4a7268", "7ca39c", "8db4ae", "3d5e58"];
+            let colorId = 0;
+
+            // Point constructor
+            function Point(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            // Get direction between two points
+            function getDir(pointA, pointB) {
+                return -Math.atan2(pointB.x - pointA.x, pointB.y - pointA.y) + Math.PI / 2;
+            }
+
+            // Draw line function
+            function drawLine(pointA, pointB, size) {
+                const opacity = Math.min(0.8, size / iterations + 0.3);
+                ctx.strokeStyle = `rgba(139, 111, 77, ${opacity})`;
+                ctx.lineWidth = size;
+                ctx.lineCap = 'round';
+                ctx.beginPath();
+                ctx.moveTo(pointA.x, pointA.y);
+                ctx.lineTo(pointB.x, pointB.y);
+                ctx.stroke();
+                ctx.closePath();
+            }
+
+            // Recursive tree iteration
+            function iterate(startPoint, deg, iteration) {
+                const length = (iterations / iteration) * 12;
+                const lineBeginning = startPoint;
+                const size = Math.max(0.5, length / 25);
+
+                const lineEnding = new Point(
+                    lineBeginning.x + length * Math.cos(deg + angleOfExpL),
+                    lineBeginning.y + length * Math.sin(deg + angleOfExpL)
+                );
+                const lineEnding2 = new Point(
+                    lineBeginning.x + length * Math.cos(deg - angleOfExpR),
+                    lineBeginning.y + length * Math.sin(deg - angleOfExpR)
+                );
+
+                drawLine(lineBeginning, lineEnding, size);
+                drawLine(lineBeginning, lineEnding2, size);
+
+                if (iteration >= iterations) {
+                    // Draw leaves/flowers at the ends
+                    ctx.fillStyle = "#" + colors[colorId % colors.length];
+                    colorId++;
+
+                    // Leaf 1
+                    ctx.globalAlpha = 0.7;
+                    ctx.beginPath();
+                    ctx.arc(lineEnding.x, lineEnding.y, 4 + Math.sin(param/20) * 1, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.closePath();
+
+                    // Leaf 2
+                    ctx.beginPath();
+                    ctx.arc(lineEnding2.x, lineEnding2.y, 3 + Math.cos(param/15) * 1, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.closePath();
+                    ctx.globalAlpha = 1;
+
+                    return;
+                }
+
+                iterate(lineEnding, deg + angleOfExpL, iteration + 1);
+                iterate(lineEnding2, deg - angleOfExpR, iteration + 1);
+            }
+
+            // Animation loop
+            function animate() {
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Center the tree
+                ctx.save();
+                ctx.translate(canvas.width / 2, canvas.height - 50);
+
+                // Gradually grow the tree
+                if (isGrowing && iterations < maxIterations) {
+                    iterations += 0.03;
+                }
+
+                // Reset color counter
+                colorId = 0;
+
+                // Calculate angles based on mouse position
+                const mouseInfluence = 0.3;
+                angleOfExpR = Math.PI / 3 + Math.sin(param / 20) * 0.1 +
+                             ((mouse.x - canvas.width / 2) / canvas.width) * mouseInfluence;
+                angleOfExpL = Math.PI / 6 + Math.cos(param / 15) * 0.1 -
+                             ((mouse.x - canvas.width / 2) / canvas.width) * mouseInfluence;
+
+                // Draw trunk
+                drawLine(new Point(0, 0), new Point(0, -80), 5);
+
+                // Draw roots
+                ctx.globalAlpha = 0.6;
+                drawLine(new Point(0, 0), new Point(-20, 20), 3);
+                drawLine(new Point(0, 0), new Point(20, 20), 3);
+                drawLine(new Point(0, 0), new Point(-10, 25), 2);
+                drawLine(new Point(0, 0), new Point(10, 25), 2);
+                ctx.globalAlpha = 1;
+
+                // Start recursive tree drawing
+                iterate(new Point(0, -80), -Math.PI / 2, 1);
+
+                ctx.restore();
+
+                param += 0.5;
+                requestAnimationFrame(animate);
+            }
+
+            // Mouse movement handler
+            canvas.addEventListener('mousemove', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            });
+
+            // Touch support for mobile
+            canvas.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                mouse.x = touch.clientX - rect.left;
+                mouse.y = touch.clientY - rect.top;
+            });
+
+            // Start animation
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+            });
         }
     });
 </script>
