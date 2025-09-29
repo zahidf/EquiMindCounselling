@@ -220,159 +220,176 @@ get_header();
         height: 100%;
     }
 
-    /* Tree animations */
-    @keyframes growTrunk {
-        0% {
-            stroke-dashoffset: 400;
-            opacity: 0;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
+    /* Tree animations - Sequential Build from Bottom to Top */
+    @keyframes drawPath {
+        to {
             stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes fadeIn {
+        to {
             opacity: 1;
         }
     }
 
-    @keyframes expandRoots {
+    @keyframes growUp {
         0% {
-            stroke-dashoffset: 300;
+            transform: scaleY(0);
             opacity: 0;
         }
         100% {
-            stroke-dashoffset: 0;
-            opacity: 0.8;
-        }
-    }
-
-    @keyframes growBranch {
-        0% {
-            stroke-dashoffset: 150;
-            opacity: 0;
-        }
-        100% {
-            stroke-dashoffset: 0;
+            transform: scaleY(1);
             opacity: 1;
         }
     }
 
-    @keyframes bloomLeaf {
+    @keyframes growLeaf {
         0% {
-            transform: scale(0) rotate(-20deg);
+            transform: scale(0);
             opacity: 0;
         }
-        50% {
-            transform: scale(1.2) rotate(5deg);
+        60% {
+            transform: scale(1.15);
         }
         100% {
-            transform: scale(1) rotate(0deg);
+            transform: scale(1);
             opacity: 1;
         }
     }
 
-    @keyframes floatLeaf {
+    @keyframes gentleSway {
         0%, 100% {
-            transform: translateY(0) rotate(0deg);
+            transform: translateX(0) rotate(0deg) scale(1);
         }
         25% {
-            transform: translateY(-3px) rotate(1deg);
-        }
-        50% {
-            transform: translateY(-5px) rotate(-1deg);
+            transform: translateX(-2px) rotate(-1deg) scale(1);
         }
         75% {
-            transform: translateY(-2px) rotate(1deg);
+            transform: translateX(2px) rotate(1deg) scale(1);
         }
     }
 
-    @keyframes glowOrb {
+    @keyframes glowPulse {
         0%, 100% {
             opacity: 0.3;
             transform: scale(1);
+            filter: blur(0px);
         }
         50% {
             opacity: 0.8;
             transform: scale(1.3);
+            filter: blur(2px);
         }
     }
 
-    /* SVG element styles */
+    /* Tree SVG element animations - Sequential from Bottom to Top */
+
+    /* 1. Roots appear first (from bottom) */
+    .tree-roots path {
+        stroke-dasharray: 120;
+        stroke-dashoffset: 120;
+        opacity: 0;
+        animation: drawPath 0.8s ease-out forwards, fadeIn 0.8s ease-out forwards;
+    }
+
+    .root-1 { animation-delay: 0.1s; }
+    .root-2 { animation-delay: 0.2s; }
+    .root-3 { animation-delay: 0.3s; }
+    .root-4 { animation-delay: 0.4s; }
+    .root-5 { animation-delay: 0.5s; }
+
+    /* 2. Trunk grows upward */
     .tree-trunk {
-        stroke: #8b6f4d;
-        stroke-width: 8;
-        fill: none;
-        stroke-dasharray: 400;
-        stroke-dashoffset: 400;
-        stroke-linecap: round;
-        animation: growTrunk 2s ease forwards;
-        animation-delay: 0.5s;
-    }
-
-    .tree-roots {
-        stroke: #6b5840;
-        stroke-width: 3;
-        fill: none;
-        stroke-dasharray: 300;
-        stroke-dashoffset: 300;
-        stroke-linecap: round;
+        transform-origin: bottom center;
         opacity: 0;
-        animation: expandRoots 2s ease forwards;
-        animation-delay: 1s;
+        transform: scaleY(0);
+        animation: growUp 1.2s ease-out forwards;
+        animation-delay: 0.6s;
     }
 
-    .tree-branch {
-        stroke: #8b6f4d;
-        stroke-width: 4;
-        fill: none;
-        stroke-dasharray: 150;
-        stroke-dashoffset: 150;
-        stroke-linecap: round;
+    /* 3. Branches draw from trunk outward (bottom to top) */
+    .tree-branches path {
+        stroke-dasharray: 200;
+        stroke-dashoffset: 200;
         opacity: 0;
-        animation: growBranch 1.5s ease forwards;
+        animation: drawPath 0.6s ease-out forwards, fadeIn 0.6s ease-out forwards;
     }
 
+    /* Lower branches first */
     .branch-1 { animation-delay: 1.5s; }
-    .branch-2 { animation-delay: 1.7s; }
-    .branch-3 { animation-delay: 1.9s; }
-    .branch-4 { animation-delay: 2.1s; }
-    .branch-5 { animation-delay: 2.3s; }
-    .branch-6 { animation-delay: 2.5s; }
+    .branch-5 { animation-delay: 1.6s; }
 
-    .tree-leaf {
-        fill: #5b8c85;
+    /* Middle-lower branches */
+    .branch-2 { animation-delay: 1.8s; }
+    .branch-6 { animation-delay: 1.9s; }
+
+    /* Middle-upper branches */
+    .branch-3 { animation-delay: 2.1s; }
+    .branch-7 { animation-delay: 2.2s; }
+
+    /* Upper branches */
+    .branch-4 { animation-delay: 2.4s; }
+    .branch-8 { animation-delay: 2.5s; }
+
+    /* Top branches */
+    .branch-9 { animation-delay: 2.7s; }
+    .branch-10 { animation-delay: 2.8s; }
+
+    /* 4. Leaves bloom from bottom to top */
+    .tree-leaves ellipse {
         opacity: 0;
-        transform-origin: center;
-        animation: bloomLeaf 0.8s ease forwards, floatLeaf 6s ease-in-out infinite;
+        transform-origin: center bottom;
+        animation: growLeaf 0.6s ease-out forwards, gentleSway 4s ease-in-out infinite;
     }
 
-    .leaf-1 { animation-delay: 2.5s, 3.3s; fill: #5b8c85; }
-    .leaf-2 { animation-delay: 2.6s, 3.4s; fill: #6b9b94; }
-    .leaf-3 { animation-delay: 2.7s, 3.5s; fill: #4a7268; }
-    .leaf-4 { animation-delay: 2.8s, 3.6s; fill: #7ca39c; }
-    .leaf-5 { animation-delay: 2.9s, 3.7s; fill: #5b8c85; }
-    .leaf-6 { animation-delay: 3.0s, 3.8s; fill: #6b9b94; }
-    .leaf-7 { animation-delay: 3.1s, 3.9s; fill: #4a7268; }
-    .leaf-8 { animation-delay: 3.2s, 4.0s; fill: #5b8c85; }
+    /* Bottom leaves */
+    .leaf-5 { animation-delay: 2.9s, 3.5s; }
+    .leaf-11 { animation-delay: 3.0s, 3.6s; }
 
-    .healing-orb {
-        fill: #ecf5f3;
+    /* Lower leaves */
+    .leaf-1 { animation-delay: 3.1s, 3.7s; }
+    .leaf-7 { animation-delay: 3.2s, 3.8s; }
+    .leaf-6 { animation-delay: 3.3s, 3.9s; }
+    .leaf-12 { animation-delay: 3.4s, 4.0s; }
+
+    /* Middle leaves */
+    .leaf-2 { animation-delay: 3.5s, 4.1s; }
+    .leaf-8 { animation-delay: 3.6s, 4.2s; }
+
+    /* Upper leaves */
+    .leaf-3 { animation-delay: 3.7s, 4.3s; }
+    .leaf-9 { animation-delay: 3.8s, 4.4s; }
+    .leaf-4 { animation-delay: 3.9s, 4.5s; }
+    .leaf-10 { animation-delay: 4.0s, 4.6s; }
+
+    /* Top leaves */
+    .leaf-16 { animation-delay: 4.1s, 4.7s; }
+    .leaf-17 { animation-delay: 4.2s, 4.8s; }
+    .leaf-13 { animation-delay: 4.3s, 4.9s; }
+    .leaf-14 { animation-delay: 4.4s, 5.0s; }
+    .leaf-15 { animation-delay: 4.5s, 5.1s; }
+
+    /* 5. Energy orbs appear last */
+    .tree-energy circle {
         opacity: 0;
-        animation: glowOrb 3s ease-in-out infinite;
+        animation: glowPulse 3s ease-in-out infinite;
     }
 
-    .orb-1 { animation-delay: 3.5s; }
-    .orb-2 { animation-delay: 3.8s; }
-    .orb-3 { animation-delay: 4.1s; }
-    .orb-4 { animation-delay: 4.4s; }
+    .orb-5 { animation-delay: 4.6s; }
+    .orb-6 { animation-delay: 4.7s; }
+    .orb-1 { animation-delay: 4.8s; }
+    .orb-2 { animation-delay: 4.9s; }
+    .orb-3 { animation-delay: 5.0s; }
+    .orb-4 { animation-delay: 5.1s; }
 
-    /* Hover effect for tree */
-    .profile-image:hover .tree-leaf {
-        animation-duration: 0.8s, 3s;
+    /* Hover effects */
+    .profile-image:hover .tree-leaves ellipse {
+        animation-duration: 0.6s, 2s;
     }
 
-    .profile-image:hover .healing-orb {
-        animation-duration: 2s;
+    .profile-image:hover .tree-energy circle {
+        animation-duration: 1.5s;
     }
 
     .profile-info {
@@ -791,9 +808,6 @@ get_header();
                             <circle cx="220" cy="300" r="3" fill="#FFA500" opacity="0.6" class="energy-orb orb-6"/>
                         </g>
                     </svg>
-                    <div class="tree-message">
-                        <p>"Like a tree, we grow stronger through our roots of experience and branches of wisdom"</p>
-                    </div>
                 </div>
                 <div class="profile-info">
                     <h3>Professional Memberships</h3>
