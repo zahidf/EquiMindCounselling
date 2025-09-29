@@ -589,7 +589,6 @@ get_header();
             <aside class="therapist-profile">
                 <div class="profile-image tree-of-life-container">
                     <canvas id="treeCanvas"></canvas>
-                    <div class="tree-hint">Move your mouse to see the tree respond</div>
                 </div>
                 <div class="profile-info">
                     <h3>Professional Memberships</h3>
