@@ -6,19 +6,19 @@ get_header();
 ?>
 
 <style>
-    /* Page Loader */
+    /* Page Loader - Matching Home Page */
     .page-loader {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
+        background: linear-gradient(135deg, #ecf5f3, #d4e8e4);
         z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
     }
 
     .page-loader.loaded {
@@ -30,19 +30,46 @@ get_header();
         text-align: center;
     }
 
-    .loader-circle {
-        width: 60px;
-        height: 60px;
-        border: 3px solid rgba(91, 140, 133, 0.2);
-        border-top-color: #5b8c85;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 20px;
+    .loader-logo {
+        font-size: 32px;
+        color: #1a2332;
+        font-weight: 700;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: loaderFadeInUp 0.8s ease forwards;
     }
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+    .loader-dots {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .loader-dot {
+        width: 12px;
+        height: 12px;
+        background: #5b8c85;
+        border-radius: 50%;
+        animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes loaderPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    @keyframes loaderFadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
     }
 
     /* Hero Section Enhanced */
@@ -854,8 +881,12 @@ get_header();
 <!-- Page Loader -->
 <div class="page-loader" id="pageLoader">
     <div class="loader-content">
-        <div class="loader-circle"></div>
-        <p style="color: #5b8c85; font-size: 16px;">Preparing your journey...</p>
+        <div class="loader-logo">EquiMind</div>
+        <div class="loader-dots">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
     </div>
 </div>
 

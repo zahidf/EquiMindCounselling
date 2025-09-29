@@ -30,22 +30,22 @@ get_header();
         text-align: center;
     }
 
-    .loader-text {
-        font-size: 26px;
+    .loader-logo {
+        font-size: 32px;
         color: #1a2332;
-        font-weight: 600;
+        font-weight: 700;
+        margin-bottom: 20px;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
     }
 
-    .loader-pulse {
+    .loader-dots {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         justify-content: center;
-        margin-top: 20px;
     }
 
-    .pulse-dot {
+    .loader-dot {
         width: 12px;
         height: 12px;
         background: #5b8c85;
@@ -53,8 +53,8 @@ get_header();
         animation: pulse 1.5s ease-in-out infinite;
     }
 
-    .pulse-dot:nth-child(2) { animation-delay: 0.2s; }
-    .pulse-dot:nth-child(3) { animation-delay: 0.4s; }
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes pulse {
         0%, 100% { transform: scale(1); opacity: 0.5; }
@@ -1017,11 +1017,11 @@ get_header();
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
-            <div class="loader-text">Exploring Our Services</div>
-            <div class="loader-pulse">
-                <div class="pulse-dot"></div>
-                <div class="pulse-dot"></div>
-                <div class="pulse-dot"></div>
+            <div class="loader-logo">EquiMind</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
             </div>
         </div>
     </div>

@@ -6,6 +6,72 @@ get_header();
 ?>
 
 <style>
+    /* Page Loader */
+    .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ecf5f3, #d4e8e4);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+
+    .page-loader.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .loader-content {
+        text-align: center;
+    }
+
+    .loader-logo {
+        font-size: 32px;
+        color: #1a2332;
+        font-weight: 700;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .loader-dots {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .loader-dot {
+        width: 12px;
+        height: 12px;
+        background: #5b8c85;
+        border-radius: 50%;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    }
+
     .child-therapy-hero {
         background: linear-gradient(135deg, rgba(236, 245, 243, 0.7) 0%, rgba(212, 232, 228, 0.7) 100%),
                     url('/wp-includes/images/hero-services.png') center center / cover no-repeat;
@@ -400,6 +466,18 @@ get_header();
 </style>
 
 <main id="primary" class="site-main">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">EquiMind</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+        </div>
+    </div>
+
     <section class="child-therapy-hero">
         <div class="child-hero-content">
             <h1>Therapy with Children and Young People</h1>
@@ -625,6 +703,14 @@ get_header();
     }
     
     document.addEventListener('DOMContentLoaded', function() {
+        // Page Loader
+        const pageLoader = document.getElementById('pageLoader');
+        if (pageLoader) {
+            setTimeout(() => {
+                pageLoader.classList.add('loaded');
+            }, 800);
+        }
+
         const cards = document.querySelectorAll('.support-card, .technique-item');
         
         const observer = new IntersectionObserver((entries) => {

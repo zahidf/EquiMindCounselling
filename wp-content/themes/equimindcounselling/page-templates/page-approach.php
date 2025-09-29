@@ -30,13 +30,31 @@ get_header();
         text-align: center;
     }
 
-    .loader-text {
-        font-size: 24px;
+    .loader-logo {
+        font-size: 32px;
         color: #1a2332;
-        font-weight: 600;
+        font-weight: 700;
+        margin-bottom: 20px;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
     }
+
+    .loader-dots {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .loader-dot {
+        width: 12px;
+        height: 12px;
+        background: #5b8c85;
+        border-radius: 50%;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes fadeInUp {
         to {
@@ -990,7 +1008,12 @@ get_header();
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
-            <div class="loader-text">Exploring Our Approach...</div>
+            <div class="loader-logo">EquiMind</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
         </div>
     </div>
 

@@ -6,7 +6,7 @@ get_header();
 ?>
 
 <style>
-    /* Page Loader */
+    /* Page Loader - Matching Home Page */
     .page-loader {
         position: fixed;
         top: 0;
@@ -30,12 +30,35 @@ get_header();
         text-align: center;
     }
 
-    .loader-text {
-        font-size: 28px;
+    .loader-logo {
+        font-size: 32px;
         color: #1a2332;
-        font-weight: 600;
+        font-weight: 700;
+        margin-bottom: 20px;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .loader-dots {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .loader-dot {
+        width: 12px;
+        height: 12px;
+        background: #5b8c85;
+        border-radius: 50%;
+        animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes loaderPulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.3); opacity: 1; }
     }
 
     @keyframes fadeInUp {
@@ -572,7 +595,12 @@ get_header();
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
-            <div class="loader-text">Preparing Your Journey...</div>
+            <div class="loader-logo">EquiMind</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
         </div>
     </div>
 
