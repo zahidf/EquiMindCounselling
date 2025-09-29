@@ -51,7 +51,9 @@ a:hover {
 }
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     padding: 12px 30px;
     background-color: #5b8c85;
     color: white;
@@ -62,6 +64,7 @@ a:hover {
     cursor: pointer;
     text-align: center;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .btn:hover {

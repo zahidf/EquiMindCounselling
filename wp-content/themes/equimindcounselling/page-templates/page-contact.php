@@ -205,6 +205,7 @@ get_header();
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 60px;
+        align-items: start;
     }
 
     /* Form Section Enhanced */
@@ -219,6 +220,7 @@ get_header();
         transform: translateX(-30px);
         animation: slideInLeft 0.8s ease forwards;
         animation-delay: 0.6s;
+        margin: 0;
     }
 
     @keyframes slideInLeft {
@@ -429,11 +431,12 @@ get_header();
 
     /* Info Section Enhanced */
     .contact-info-section {
-        padding: 40px 0;
+        padding: 0;
         opacity: 0;
         transform: translateX(30px);
         animation: slideInRight 0.8s ease forwards;
         animation-delay: 0.8s;
+        margin: 0;
     }
 
     @keyframes slideInRight {

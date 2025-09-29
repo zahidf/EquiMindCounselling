@@ -415,13 +415,14 @@ get_header();
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 20px;
         margin: 40px auto;
+        padding: 0;
         text-align: left;
         max-width: 800px;
     }
 
     .specialisms-list li {
         list-style: none;
-        padding: 15px 15px 15px 45px;
+        padding: 15px 20px 15px 50px;
         position: relative;
         color: #2c3e50;
         background: white;
@@ -430,6 +431,8 @@ get_header();
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateX(-20px);
+        display: flex;
+        align-items: center;
     }
 
     .specialisms-list li.slide-in {
