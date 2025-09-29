@@ -567,26 +567,223 @@ get_header();
     }
     
     @media (max-width: 768px) {
+        .about-hero {
+            padding: 80px 0;
+            min-height: 50vh;
+        }
+
+        .about-hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            padding: 0 15px;
+        }
+
+        .hero-badge {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
         .about-container {
             grid-template-columns: 1fr;
             gap: 40px;
+            padding: 0 15px;
         }
-        
+
         .therapist-profile {
             position: static;
             text-align: center;
         }
-        
+
         .profile-image {
             margin: 0 auto 30px;
+            max-width: 280px;
+            height: 350px;
         }
-        
+
+        #treeCanvas {
+            height: 300px;
+            width: 100%;
+            touch-action: manipulation;
+        }
+
+        .tree-hint {
+            font-size: 10px;
+            padding: 3px 8px;
+            bottom: 10px;
+        }
+
         .personal-statement {
             padding: 30px 20px;
+            margin: 40px 0;
         }
-        
+
+        .personal-statement h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .personal-statement p {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
         .values-grid {
             grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .value-item {
+            padding: 20px;
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+
+        .about-details {
+            padding: 0 15px;
+        }
+
+        .about-details h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-details h3 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+
+        .about-details p {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .journey-timeline {
+            padding-left: 30px;
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            padding-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            left: -36px;
+            width: 12px;
+            height: 12px;
+        }
+
+        .timeline-item h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .qualifications-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .qualification-card {
+            padding: 20px;
+        }
+
+        .qualification-card h4 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .qualification-card p {
+            font-size: 13px;
+        }
+
+        .values-section {
+            padding: 40px 0;
+        }
+
+        .values-section h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            padding: 0 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-hero h1 {
+            font-size: 28px;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+        }
+
+        .hero-badge {
+            font-size: 12px;
+            padding: 8px 16px;
+        }
+
+        .profile-image {
+            max-width: 240px;
+            height: 300px;
+        }
+
+        #treeCanvas {
+            height: 250px;
+        }
+
+        .personal-statement {
+            padding: 25px 15px;
+        }
+
+        .personal-statement h2 {
+            font-size: 22px;
+        }
+
+        .personal-statement p {
+            font-size: 14px;
+        }
+
+        .about-details h2 {
+            font-size: 24px;
+        }
+
+        .about-details h3 {
+            font-size: 20px;
+        }
+
+        .timeline-item h4 {
+            font-size: 15px;
+        }
+
+        .qualification-card {
+            padding: 15px;
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .value-item h4 {
+            font-size: 16px;
+        }
+
+        .value-item p {
+            font-size: 13px;
         }
     }
 </style>
@@ -1202,6 +1399,57 @@ get_header();
                 canvas.width = rect.width;
                 canvas.height = rect.height;
             });
+
+            // Optimize for mobile devices
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                // Reduce maximum iterations for better mobile performance
+                maxIterations = 5;
+
+                // Simplify mouse interaction on mobile
+                canvas.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    const rect = canvas.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    mouse.x = touch.clientX - rect.left;
+                    mouse.y = touch.clientY - rect.top;
+                }, { passive: false });
+
+                // Add visual feedback for mobile touch
+                canvas.style.cursor = 'pointer';
+
+                // Reduce animation complexity for mobile performance
+                const originalAnimate = animate;
+                animate = function() {
+                    if (iterations < maxIterations) {
+                        iterations += 0.05; // Slightly faster growth on mobile
+                    }
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(canvas.width / 2, canvas.height - 30);
+
+                    colorId = 0;
+
+                    // Simplified angles for mobile
+                    angleOfExpR = Math.PI / 3 + Math.sin(param / 30) * 0.05;
+                    angleOfExpL = Math.PI / 6 + Math.cos(param / 25) * 0.05;
+
+                    drawLine(new Point(0, 0), new Point(0, -60), 4);
+
+                    // Simplified roots for mobile
+                    ctx.globalAlpha = 0.5;
+                    drawLine(new Point(0, 0), new Point(-15, 15), 2);
+                    drawLine(new Point(0, 0), new Point(15, 15), 2);
+                    ctx.globalAlpha = 1;
+
+                    iterate(new Point(0, -60), -Math.PI / 2, 1);
+
+                    ctx.restore();
+                    param += 0.3; // Slower animation on mobile
+                    requestAnimationFrame(animate);
+                };
+            }
         }
     });
 </script>

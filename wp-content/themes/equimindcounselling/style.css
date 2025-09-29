@@ -153,8 +153,251 @@ a:hover {
     display: block;
 }
 
+.show-mobile {
+    display: none;
+}
+
+/* Enhanced Mobile-First Responsive Utilities */
 @media (max-width: 768px) {
     .hide-mobile {
         display: none;
+    }
+
+    .show-mobile {
+        display: block;
+    }
+
+    .mobile-text-center {
+        text-align: center;
+    }
+
+    .mobile-full-width {
+        width: 100% !important;
+    }
+
+    .mobile-no-padding {
+        padding: 0 !important;
+    }
+
+    .mobile-reduced-padding {
+        padding: 15px !important;
+    }
+
+    .mobile-stack {
+        flex-direction: column !important;
+    }
+
+    .mobile-hide-overflow {
+        overflow: hidden;
+    }
+}
+
+/* Touch-Friendly Improvements */
+.btn,
+.service-link,
+.specialist-link,
+button,
+input[type="submit"],
+input[type="button"],
+.clickable {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Remove tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
+    /* Improve touch responsiveness */
+    touch-action: manipulation;
+}
+
+/* Enhanced touch targets for mobile */
+@media (max-width: 768px) {
+    .service-card,
+    .specialist-card,
+    .qualification-card,
+    .value-item,
+    .timeline-item {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Ensure adequate spacing between interactive elements */
+    .hero-buttons .btn {
+        margin: 8px 0;
+    }
+
+    .service-cta {
+        gap: 15px;
+    }
+
+    /* Improve scroll performance on mobile */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Optimize animations for mobile */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+/* Form Elements Mobile Optimization */
+@media (max-width: 768px) {
+    input,
+    textarea,
+    select {
+        font-size: 16px !important; /* Prevent zoom on iOS */
+        padding: 12px 15px !important;
+        border-radius: 8px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+}
+
+/* Navigation Mobile Improvements */
+@media (max-width: 768px) {
+    .main-navigation {
+        padding: 10px 15px;
+    }
+
+    .site-branding {
+        font-size: 20px;
+    }
+
+    .menu-toggle {
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Grid Improvements for Mobile */
+@media (max-width: 768px) {
+    .services-grid,
+    .values-grid,
+    .qualifications-grid,
+    .specialist-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .about-container,
+    .contact-container {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+}
+
+/* Performance Optimizations for Mobile */
+@media (max-width: 768px) {
+    /* Reduce animations for better performance */
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.3s !important;
+    }
+
+    /* Simplify complex animations */
+    .float,
+    .parallax {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* Optimize images */
+    img {
+        image-rendering: optimizeSpeed;
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Canvas and Interactive Elements Mobile */
+@media (max-width: 768px) {
+    #treeCanvas {
+        height: 250px !important;
+        width: 100% !important;
+        touch-action: manipulation;
+    }
+
+    .tree-hint {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .profile-image {
+        max-width: 250px !important;
+        height: 300px !important;
+        margin: 0 auto;
+    }
+}
+
+/* Typography Enhancements for Mobile */
+@media (max-width: 768px) {
+    .hero-title,
+    .services-hero h1,
+    .about-hero h1,
+    .contact-hero h1 {
+        line-height: 1.2 !important;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    .hero-text,
+    .service-description,
+    .welcome-text {
+        line-height: 1.6 !important;
+        text-align: left;
+    }
+
+    /* Prevent text overflow */
+    h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Accessibility Improvements */
+@media (max-width: 768px) {
+    /* Focus states for touch devices */
+    .btn:focus,
+    .service-link:focus,
+    .specialist-link:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: 3px solid #5b8c85;
+        outline-offset: 2px;
+    }
+
+    /* Skip links for keyboard navigation */
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #5b8c85;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 10000;
+    }
+
+    .skip-link:focus {
+        top: 6px;
     }
 }
