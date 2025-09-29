@@ -375,15 +375,29 @@ get_header();
         font-weight: 600;
         display: flex;
         align-items: center;
-        gap: 10px;
+        justify-content: space-between;
         cursor: pointer;
         transition: color 0.3s ease;
+        user-select: none;
+        padding: 10px;
+        background: linear-gradient(135deg, #f9fbfa, transparent);
+        border-radius: 8px;
+    }
+
+    .service-features h4:hover {
+        color: #5b8c85;
+        background: linear-gradient(135deg, #ecf5f3, transparent);
     }
 
     .service-features h4::after {
         content: '▼';
-        font-size: 12px;
+        font-size: 14px;
         transition: transform 0.3s ease;
+        color: #5b8c85;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
     }
 
     .service-features.expanded h4::after {
@@ -397,9 +411,16 @@ get_header();
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
-        max-height: 500px;
+        max-height: 0;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+    }
+
+    .service-features.expanded .feature-list {
+        max-height: 600px;
+        opacity: 1;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease 0.1s;
     }
 
     .feature-list li {
@@ -410,19 +431,26 @@ get_header();
         background: #f9fbfa;
         border-radius: 8px;
         transition: all 0.3s ease;
-        transform: translateX(-10px);
-        opacity: 0;
-        animation: slideIn 0.5s ease forwards;
     }
 
-    .feature-list li:nth-child(1) { animation-delay: 0.1s; }
-    .feature-list li:nth-child(2) { animation-delay: 0.2s; }
-    .feature-list li:nth-child(3) { animation-delay: 0.3s; }
-    .feature-list li:nth-child(4) { animation-delay: 0.4s; }
-    .feature-list li:nth-child(5) { animation-delay: 0.5s; }
-    .feature-list li:nth-child(6) { animation-delay: 0.6s; }
+    .service-features.expanded .feature-list li {
+        animation: slideIn 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    .service-features.expanded .feature-list li:nth-child(1) { animation-delay: 0.1s; }
+    .service-features.expanded .feature-list li:nth-child(2) { animation-delay: 0.15s; }
+    .service-features.expanded .feature-list li:nth-child(3) { animation-delay: 0.2s; }
+    .service-features.expanded .feature-list li:nth-child(4) { animation-delay: 0.25s; }
+    .service-features.expanded .feature-list li:nth-child(5) { animation-delay: 0.3s; }
+    .service-features.expanded .feature-list li:nth-child(6) { animation-delay: 0.35s; }
+    .service-features.expanded .feature-list li:nth-child(7) { animation-delay: 0.4s; }
 
     @keyframes slideIn {
+        from {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
         to {
             transform: translateX(0);
             opacity: 1;
@@ -731,44 +759,256 @@ get_header();
     }
 
     /* Responsive Styles */
-    @media (max-width: 768px) {
-        .services-hero h1 {
-            font-size: 38px;
-        }
-
-        .services-hero p {
-            font-size: 20px;
-        }
-
+    @media (max-width: 992px) {
         .services-grid {
             grid-template-columns: 1fr;
-            gap: 35px;
-        }
-
-        .benefits-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .service-cta {
-            flex-direction: column;
+            gap: 40px;
         }
 
         .specialist-grid {
             grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .services-hero {
+            padding: 80px 20px;
+            min-height: auto;
         }
 
-        .service-header {
-            flex-direction: column;
-            text-align: center;
+        .services-hero h1 {
+            font-size: 32px;
+            line-height: 1.3;
+            padding: 0 10px;
         }
 
-        .service-icon-large {
-            margin: 0 auto 25px;
+        .services-hero p {
+            font-size: 18px;
+            padding: 0 10px;
         }
 
         .hero-badges {
-            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .hero-badge {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        .services-main {
+            padding: 50px 0;
+        }
+
+        .services-intro {
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .services-intro p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 0 15px;
+        }
+
+        .service-block {
+            padding: 30px 20px;
+            border-radius: 15px;
+        }
+
+        .service-block:hover {
+            transform: none;
+            box-shadow: 0 10px 30px rgba(91, 140, 133, 0.12);
+        }
+
+        .service-header {
+            flex-direction: row;
             align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon-large {
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            margin-right: 15px;
+            border-radius: 15px;
+        }
+
+        .service-block:hover .service-icon-large {
+            transform: scale(1.1);
+        }
+
+        .service-title-section h2 {
+            font-size: 22px;
+        }
+
+        .service-subtitle {
+            font-size: 14px;
+        }
+
+        .service-description {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-features h4 {
+            font-size: 17px;
+            padding: 8px;
+        }
+
+        .feature-list li {
+            padding: 10px 10px 10px 30px;
+            font-size: 14px;
+        }
+
+        .service-benefits {
+            padding: 20px 15px;
+        }
+
+        .service-benefits h4 {
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .benefit-item {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        .service-cta {
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-service,
+        .btn-service-outline {
+            width: 100%;
+            text-align: center;
+            padding: 12px 25px;
+            font-size: 15px;
+        }
+
+        .specialist-section {
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+
+        .specialist-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .specialist-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+            padding: 0 15px;
+        }
+
+        .specialist-card {
+            padding: 25px 20px;
+            border-radius: 15px;
+        }
+
+        .specialist-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(91, 140, 133, 0.12);
+        }
+
+        .specialist-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .specialist-card p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .specialist-link {
+            font-size: 14px;
+        }
+
+        /* Disable complex animations on mobile for performance */
+        .service-block,
+        .specialist-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .services-hero h1 {
+            font-size: 26px;
+        }
+
+        .services-hero p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+
+        .service-block {
+            padding: 25px 15px;
+        }
+
+        .service-icon-large {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+
+        .service-title-section h2 {
+            font-size: 20px;
+        }
+
+        .service-features h4 {
+            font-size: 16px;
+        }
+
+        .specialist-title {
+            font-size: 24px;
+        }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+        .service-block:hover,
+        .specialist-card:hover {
+            transform: none;
+        }
+
+        .service-features h4 {
+            padding: 12px;
+            background: linear-gradient(135deg, #ecf5f3, transparent);
+        }
+
+        .btn-service,
+        .btn-service-outline {
+            -webkit-tap-highlight-color: transparent;
         }
     }
 </style>
@@ -1084,18 +1324,62 @@ get_header();
             const heading = section.querySelector('h4');
             const list = section.querySelector('.feature-list');
 
+            // Start with sections expanded on desktop, collapsed on mobile
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                section.classList.add('expanded');
+                if (list) {
+                    list.style.maxHeight = list.scrollHeight + 'px';
+                }
+            }
+
             if (heading && list) {
-                heading.addEventListener('click', function() {
+                heading.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
                     section.classList.toggle('expanded');
                     const isExpanded = section.classList.contains('expanded');
 
                     if (isExpanded) {
+                        // Calculate the actual height needed
                         list.style.maxHeight = list.scrollHeight + 'px';
+
+                        // Recalculate on window resize
+                        setTimeout(() => {
+                            list.style.maxHeight = list.scrollHeight + 'px';
+                        }, 100);
                     } else {
-                        list.style.maxHeight = '500px';
+                        list.style.maxHeight = '0px';
+                    }
+                });
+
+                // Add keyboard accessibility
+                heading.setAttribute('tabindex', '0');
+                heading.setAttribute('role', 'button');
+                heading.setAttribute('aria-expanded', section.classList.contains('expanded'));
+
+                heading.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        heading.click();
                     }
                 });
             }
+        });
+
+        // Recalculate heights on window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                featureSections.forEach(section => {
+                    const list = section.querySelector('.feature-list');
+                    if (list && section.classList.contains('expanded')) {
+                        list.style.maxHeight = list.scrollHeight + 'px';
+                    }
+                });
+            }, 250);
         });
 
         // Parallax Effect
