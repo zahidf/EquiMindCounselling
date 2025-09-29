@@ -6,15 +6,62 @@ get_header();
 ?>
 
 <style>
+    /* Page Loader */
+    .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ecf5f3, #d4e8e4);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+
+    .page-loader.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .loader-content {
+        text-align: center;
+    }
+
+    .loader-text {
+        font-size: 28px;
+        color: #1a2332;
+        font-weight: 600;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    }
+
+    /* Hero Section Enhanced */
     .about-hero {
-        background: linear-gradient(135deg, rgba(236, 245, 243, 0.7) 0%, rgba(212, 232, 228, 0.7) 100%),
+        background: linear-gradient(135deg, rgba(236, 245, 243, 0.85) 0%, rgba(212, 232, 228, 0.85) 100%),
                     url('/wp-includes/images/hero-about.png') center center / cover no-repeat;
-        padding: 100px 0;
+        padding: 120px 0;
         text-align: center;
         position: relative;
         overflow: hidden;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
     }
-    
+
     .about-hero::before {
         content: '';
         position: absolute;
@@ -25,32 +72,84 @@ get_header();
         background: radial-gradient(circle, rgba(91, 140, 133, 0.1) 0%, transparent 70%);
         animation: float 20s ease-in-out infinite;
     }
-    
+
+    .about-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -15%;
+        width: 50%;
+        height: 150%;
+        background: radial-gradient(circle, rgba(74, 114, 104, 0.08) 0%, transparent 70%);
+        animation: float 25s ease-in-out infinite reverse;
+    }
+
     @keyframes float {
         0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-15px) rotate(2deg); }
         50% { transform: translateY(-20px) rotate(5deg); }
+        75% { transform: translateY(-10px) rotate(3deg); }
     }
-    
-    .about-hero h1 {
-        font-size: 48px;
-        color: #1a2332;
-        margin-bottom: 20px;
-        font-weight: 700;
-        line-height: 1.2;
+
+    .hero-content-wrapper {
         position: relative;
         z-index: 1;
+        width: 100%;
     }
-    
+
+    .about-hero h1 {
+        font-size: 52px;
+        color: #1a2332;
+        margin-bottom: 25px;
+        font-weight: 700;
+        line-height: 1.2;
+        opacity: 0;
+        animation: heroFadeInUp 0.8s ease forwards;
+        animation-delay: 0.2s;
+    }
+
     .about-hero p {
-        font-size: 24px;
+        font-size: 26px;
         color: #1a2332;
         max-width: 800px;
         margin: 0 auto;
-        position: relative;
-        z-index: 1;
         font-style: italic;
         font-weight: 500;
         text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        animation: heroFadeInUp 0.8s ease forwards;
+        animation-delay: 0.4s;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 25px;
+        background: white;
+        border-radius: 30px;
+        color: #5b8c85;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: heroFadeInUp 0.8s ease forwards;
+        animation-delay: 0.6s;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(91, 140, 133, 0.2);
+    }
+
+    @keyframes heroFadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
     }
     
     .about-content {
@@ -71,27 +170,77 @@ get_header();
     .therapist-profile {
         position: sticky;
         top: 100px;
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideInLeft 0.8s ease forwards;
+        animation-delay: 0.3s;
     }
-    
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
     .profile-image {
         width: 100%;
         max-width: 300px;
         height: 400px;
         background: linear-gradient(135deg, #ecf5f3 0%, #d4e8e4 100%);
-        border-radius: 10px;
+        border-radius: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #5b8c85;
         font-size: 18px;
         margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
+    .profile-image::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: rotate(45deg);
+        transition: all 0.5s;
+        opacity: 0;
+    }
+
+    .profile-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(91, 140, 133, 0.2);
+    }
+
+    .profile-image:hover::before {
+        animation: shimmer 0.5s ease;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%) translateY(100%); opacity: 0; }
+    }
+
     .profile-info {
-        background-color: #f9fbfa;
-        padding: 25px;
-        border-radius: 10px;
+        background: linear-gradient(135deg, #f9fbfa 0%, #ffffff 100%);
+        padding: 30px;
+        border-radius: 15px;
         border-left: 4px solid #5b8c85;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .profile-info:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 30px rgba(91, 140, 133, 0.15);
     }
     
     .profile-info h3 {
@@ -138,27 +287,66 @@ get_header();
     }
     
     .journey-timeline {
-        margin: 30px 0;
-        padding-left: 30px;
-        border-left: 2px solid #e8f0ef;
+        margin: 40px 0;
+        padding-left: 40px;
+        border-left: 3px solid transparent;
+        border-image: linear-gradient(180deg, #5b8c85 0%, #4a7268 100%);
+        border-image-slice: 1;
+        position: relative;
     }
-    
+
     .timeline-item {
         position: relative;
-        padding-bottom: 30px;
+        padding-bottom: 40px;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
+    .timeline-item.animate-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
     .timeline-item::before {
         content: '';
         position: absolute;
-        left: -36px;
+        left: -46px;
         top: 5px;
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(135deg, #5b8c85, #4a7268);
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        box-shadow: 0 0 0 5px #ecf5f3, 0 3px 10px rgba(91, 140, 133, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover::before {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 8px #ecf5f3, 0 5px 20px rgba(91, 140, 133, 0.4);
+    }
+
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: -43px;
+        top: 8px;
         width: 10px;
         height: 10px;
-        background-color: #5b8c85;
+        background: white;
         border-radius: 50%;
-        border: 2px solid #ffffff;
-        box-shadow: 0 0 0 3px #ecf5f3;
+        opacity: 0;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .timeline-item:hover::after {
+        opacity: 1;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(0.8); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.5; }
     }
     
     .timeline-item h4 {
@@ -176,15 +364,49 @@ get_header();
     .qualifications-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin: 30px 0;
+        gap: 25px;
+        margin: 40px 0;
     }
-    
+
     .qualification-card {
-        background-color: #f9fbfa;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 3px solid #5b8c85;
+        background: linear-gradient(135deg, #ffffff 0%, #f9fbfa 100%);
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 4px solid transparent;
+        border-image: linear-gradient(180deg, #5b8c85 0%, #4a7268 100%);
+        border-image-slice: 1;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .qualification-card.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .qualification-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(91, 140, 133, 0.05) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .qualification-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 30px rgba(91, 140, 133, 0.15);
+    }
+
+    .qualification-card:hover::before {
+        opacity: 1;
     }
     
     .qualification-card h4 {
@@ -236,19 +458,66 @@ get_header();
     
     .value-item {
         text-align: center;
-        padding: 20px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
+
+    .value-item.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .value-item:hover {
+        transform: translateY(-10px);
+    }
+
     .value-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 15px;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
         background: linear-gradient(135deg, #ecf5f3, #d4e8e4);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: 28px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 5px 15px rgba(91, 140, 133, 0.2);
+    }
+
+    .value-item:hover .value-icon {
+        transform: rotateY(360deg) scale(1.1);
+        background: linear-gradient(135deg, #5b8c85, #4a7268);
+        box-shadow: 0 8px 25px rgba(91, 140, 133, 0.3);
+    }
+
+    .value-icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid #5b8c85;
+        opacity: 0;
+        animation: rippleOut 2s ease-in-out infinite;
+    }
+
+    .value-item:hover .value-icon::after {
+        animation-play-state: running;
+    }
+
+    @keyframes rippleOut {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
     }
     
     .value-item h4 {
@@ -289,10 +558,18 @@ get_header();
 </style>
 
 <main id="primary" class="site-main">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-text">Preparing Your Journey...</div>
+        </div>
+    </div>
+
     <section class="about-hero">
-        <div class="container">
+        <div class="container hero-content-wrapper">
             <h1>Meet Your Therapist</h1>
             <p>Zeenat - Accredited Psychotherapist & Counsellor</p>
+            <div class="hero-badge">Over 10 Years of Experience</div>
         </div>
     </section>
     
@@ -444,36 +721,287 @@ get_header();
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Page Loader Animation
+        const pageLoader = document.getElementById('pageLoader');
+        if (pageLoader) {
+            setTimeout(() => {
+                pageLoader.classList.add('loaded');
+            }, 600);
+        }
+
+        // Smooth Scroll for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Timeline Animation
         const timelineItems = document.querySelectorAll('.timeline-item');
-        const valueItems = document.querySelectorAll('.value-item');
-        
-        const observer = new IntersectionObserver((entries) => {
+        const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.style.opacity = '0';
-                        entry.target.style.transform = 'translateX(-20px)';
-                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                        
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateX(0)';
-                        }, 100);
+                        entry.target.classList.add('animate-in');
+                        // Animate the connecting line
+                        if (index > 0) {
+                            const line = entry.target.previousElementSibling;
+                            if (line) {
+                                setTimeout(() => {
+                                    line.style.opacity = '1';
+                                }, 200);
+                            }
+                        }
+                    }, index * 150);
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Qualification Cards Animation
+        const qualificationCards = document.querySelectorAll('.qualification-card');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('fade-in');
+                        entry.target.style.transitionDelay = `${index * 0.1}s`;
                     }, index * 100);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        qualificationCards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Value Items Animation
+        const valueItems = document.querySelectorAll('.value-item');
+        const valueObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.style.transitionDelay = `${index * 0.15}s`;
+                    }, index * 100);
+                    valueObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        valueItems.forEach(item => {
+            valueObserver.observe(item);
+        });
+
+        // Personal Statement Animation
+        const personalStatement = document.querySelector('.personal-statement');
+        if (personalStatement) {
+            const statementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        statementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            statementObserver.observe(personalStatement);
+        }
+
+        // Parallax Effect for Hero
+        let ticking = false;
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.about-hero');
+
+            if (heroSection && scrolled < window.innerHeight) {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                heroSection.style.backgroundPositionY = `${yPos}px`;
+            }
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Profile Image Interaction
+        const profileImage = document.querySelector('.profile-image');
+        if (profileImage) {
+            profileImage.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            profileImage.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        }
+
+        // Add Text Animation on Scroll
+        const animateText = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-        
+        };
+
+        const textObserver = new IntersectionObserver(animateText, {
+            threshold: 0.3
+        });
+
+        document.querySelectorAll('.about-details h2, .about-details h3, .personal-statement h2').forEach(el => {
+            textObserver.observe(el);
+        });
+
+        // Progressive Text Reveal
+        const paragraphs = document.querySelectorAll('.about-details p, .personal-statement p');
+        const paragraphObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(15px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.5s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 50);
+                    paragraphObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        paragraphs.forEach(p => {
+            paragraphObserver.observe(p);
+        });
+
+        // Floating Animation for Hero Elements
+        const heroElements = document.querySelectorAll('.about-hero::before, .about-hero::after');
+        let scrollPos = 0;
+
+        window.addEventListener('scroll', () => {
+            scrollPos = window.pageYOffset;
+            if (heroElements.length > 0) {
+                requestAnimationFrame(() => {
+                    const hero = document.querySelector('.about-hero');
+                    if (hero) {
+                        hero.style.setProperty('--scroll', scrollPos);
+                    }
+                });
+            }
+        });
+
+        // Add Hover Effect to Timeline Items
         timelineItems.forEach(item => {
-            item.style.opacity = '0';
-            observer.observe(item);
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                if (this.classList.contains('animate-in')) {
+                    this.style.transform = 'translateX(0)';
+                }
+            });
         });
-        
-        valueItems.forEach(item => {
-            item.style.opacity = '0';
-            observer.observe(item);
-        });
+
+        // Interactive Profile Info
+        const profileInfo = document.querySelector('.profile-info');
+        if (profileInfo) {
+            const infoItems = profileInfo.querySelectorAll('p');
+            infoItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 800 + (index * 100));
+            });
+        }
+
+        // Add Number Counter Animation for Experience Badge
+        const heroBadge = document.querySelector('.hero-badge');
+        if (heroBadge) {
+            const animateValue = (element, start, end, duration) => {
+                const startTimestamp = Date.now();
+                const step = () => {
+                    const timestamp = Date.now();
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    element.textContent = `Over ${value} Years of Experience`;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            const badgeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            animateValue(entry.target, 0, 10, 1500);
+                        }, 600);
+                        badgeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            badgeObserver.observe(heroBadge);
+        }
     });
 </script>
 
