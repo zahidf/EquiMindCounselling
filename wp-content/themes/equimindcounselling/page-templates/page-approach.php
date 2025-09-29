@@ -592,12 +592,14 @@ get_header();
         margin: 0 auto 25px;
         font-size: 36px;
         color: white;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.6s ease, box-shadow 0.3s ease;
         position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000px;
     }
 
     .value-card:hover .value-icon {
-        transform: rotateY(360deg) scale(1.1);
+        transform: scale(1.1);
         box-shadow: 0 8px 25px rgba(91, 140, 133, 0.4);
     }
 
@@ -609,22 +611,13 @@ get_header();
         border-radius: 50%;
         border: 3px solid #5b8c85;
         opacity: 0;
-        animation: rippleOut 2s ease-in-out infinite;
+        transform: scale(1);
+        transition: all 0.3s ease;
     }
 
     .value-card:hover .value-icon::after {
-        animation-play-state: running;
-    }
-
-    @keyframes rippleOut {
-        0% {
-            transform: scale(1);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(1.5);
-            opacity: 0;
-        }
+        opacity: 0.3;
+        transform: scale(1.2);
     }
 
     .value-card h3 {
@@ -1461,8 +1454,15 @@ get_header();
         valueCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const icon = this.querySelector('.value-icon');
-                if (icon) {
+                if (icon && icon.style.animationPlayState) {
                     icon.style.animationPlayState = 'running';
+                }
+            });
+
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.value-icon');
+                if (icon && icon.style.animationPlayState) {
+                    icon.style.animationPlayState = 'paused';
                 }
             });
         });
