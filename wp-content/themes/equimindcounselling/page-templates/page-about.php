@@ -192,26 +192,11 @@ get_header();
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #5b8c85;
-        font-size: 18px;
         margin-bottom: 30px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .profile-image::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transform: rotate(45deg);
-        transition: all 0.5s;
-        opacity: 0;
     }
 
     .profile-image:hover {
@@ -219,14 +204,175 @@ get_header();
         box-shadow: 0 15px 40px rgba(91, 140, 133, 0.2);
     }
 
-    .profile-image:hover::before {
-        animation: shimmer 0.5s ease;
+    /* Tree of Life Container */
+    .tree-container {
+        width: 260px;
+        height: 360px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    @keyframes shimmer {
-        0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateX(100%) translateY(100%); opacity: 0; }
+    /* Tree SVG Styles */
+    .tree-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Tree animations */
+    @keyframes growTrunk {
+        0% {
+            stroke-dashoffset: 400;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes expandRoots {
+        0% {
+            stroke-dashoffset: 300;
+            opacity: 0;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes growBranch {
+        0% {
+            stroke-dashoffset: 150;
+            opacity: 0;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes bloomLeaf {
+        0% {
+            transform: scale(0) rotate(-20deg);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.2) rotate(5deg);
+        }
+        100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes floatLeaf {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        25% {
+            transform: translateY(-3px) rotate(1deg);
+        }
+        50% {
+            transform: translateY(-5px) rotate(-1deg);
+        }
+        75% {
+            transform: translateY(-2px) rotate(1deg);
+        }
+    }
+
+    @keyframes glowOrb {
+        0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scale(1.3);
+        }
+    }
+
+    /* SVG element styles */
+    .tree-trunk {
+        stroke: #8b6f4d;
+        stroke-width: 8;
+        fill: none;
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+        stroke-linecap: round;
+        animation: growTrunk 2s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .tree-roots {
+        stroke: #6b5840;
+        stroke-width: 3;
+        fill: none;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        stroke-linecap: round;
+        opacity: 0;
+        animation: expandRoots 2s ease forwards;
+        animation-delay: 1s;
+    }
+
+    .tree-branch {
+        stroke: #8b6f4d;
+        stroke-width: 4;
+        fill: none;
+        stroke-dasharray: 150;
+        stroke-dashoffset: 150;
+        stroke-linecap: round;
+        opacity: 0;
+        animation: growBranch 1.5s ease forwards;
+    }
+
+    .branch-1 { animation-delay: 1.5s; }
+    .branch-2 { animation-delay: 1.7s; }
+    .branch-3 { animation-delay: 1.9s; }
+    .branch-4 { animation-delay: 2.1s; }
+    .branch-5 { animation-delay: 2.3s; }
+    .branch-6 { animation-delay: 2.5s; }
+
+    .tree-leaf {
+        fill: #5b8c85;
+        opacity: 0;
+        transform-origin: center;
+        animation: bloomLeaf 0.8s ease forwards, floatLeaf 6s ease-in-out infinite;
+    }
+
+    .leaf-1 { animation-delay: 2.5s, 3.3s; fill: #5b8c85; }
+    .leaf-2 { animation-delay: 2.6s, 3.4s; fill: #6b9b94; }
+    .leaf-3 { animation-delay: 2.7s, 3.5s; fill: #4a7268; }
+    .leaf-4 { animation-delay: 2.8s, 3.6s; fill: #7ca39c; }
+    .leaf-5 { animation-delay: 2.9s, 3.7s; fill: #5b8c85; }
+    .leaf-6 { animation-delay: 3.0s, 3.8s; fill: #6b9b94; }
+    .leaf-7 { animation-delay: 3.1s, 3.9s; fill: #4a7268; }
+    .leaf-8 { animation-delay: 3.2s, 4.0s; fill: #5b8c85; }
+
+    .healing-orb {
+        fill: #ecf5f3;
+        opacity: 0;
+        animation: glowOrb 3s ease-in-out infinite;
+    }
+
+    .orb-1 { animation-delay: 3.5s; }
+    .orb-2 { animation-delay: 3.8s; }
+    .orb-3 { animation-delay: 4.1s; }
+    .orb-4 { animation-delay: 4.4s; }
+
+    /* Hover effect for tree */
+    .profile-image:hover .tree-leaf {
+        animation-duration: 0.8s, 3s;
+    }
+
+    .profile-image:hover .healing-orb {
+        animation-duration: 2s;
     }
 
     .profile-info {
@@ -576,8 +722,78 @@ get_header();
     <section class="about-content">
         <div class="about-container">
             <aside class="therapist-profile">
-                <div class="profile-image">
-                    [Professional Photo]
+                <div class="profile-image tree-of-life-container">
+                    <svg class="tree-of-life" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Roots -->
+                        <g class="tree-roots">
+                            <path d="M200 400 Q180 420 160 450" stroke="#8B7355" stroke-width="3" fill="none" class="root root-1"/>
+                            <path d="M200 400 Q200 420 190 450" stroke="#8B7355" stroke-width="2.5" fill="none" class="root root-2"/>
+                            <path d="M200 400 Q220 420 240 450" stroke="#8B7355" stroke-width="3" fill="none" class="root root-3"/>
+                            <path d="M200 400 Q180 430 150 460" stroke="#8B7355" stroke-width="2" fill="none" class="root root-4"/>
+                            <path d="M200 400 Q220 430 250 460" stroke="#8B7355" stroke-width="2" fill="none" class="root root-5"/>
+                        </g>
+
+                        <!-- Trunk -->
+                        <rect x="185" y="200" width="30" height="200" fill="#8B7355" class="tree-trunk"/>
+
+                        <!-- Main Branches -->
+                        <g class="tree-branches">
+                            <!-- Left branches -->
+                            <path d="M190 300 Q150 280 120 260" stroke="#8B7355" stroke-width="4" fill="none" class="branch branch-1"/>
+                            <path d="M185 250 Q140 230 100 200" stroke="#8B7355" stroke-width="3.5" fill="none" class="branch branch-2"/>
+                            <path d="M185 200 Q150 180 120 150" stroke="#8B7355" stroke-width="3" fill="none" class="branch branch-3"/>
+                            <path d="M190 150 Q160 130 140 100" stroke="#8B7355" stroke-width="2.5" fill="none" class="branch branch-4"/>
+
+                            <!-- Right branches -->
+                            <path d="M210 300 Q250 280 280 260" stroke="#8B7355" stroke-width="4" fill="none" class="branch branch-5"/>
+                            <path d="M215 250 Q260 230 300 200" stroke="#8B7355" stroke-width="3.5" fill="none" class="branch branch-6"/>
+                            <path d="M215 200 Q250 180 280 150" stroke="#8B7355" stroke-width="3" fill="none" class="branch branch-7"/>
+                            <path d="M210 150 Q240 130 260 100" stroke="#8B7355" stroke-width="2.5" fill="none" class="branch branch-8"/>
+
+                            <!-- Top branches -->
+                            <path d="M200 150 Q200 120 190 90" stroke="#8B7355" stroke-width="2" fill="none" class="branch branch-9"/>
+                            <path d="M200 150 Q200 120 210 90" stroke="#8B7355" stroke-width="2" fill="none" class="branch branch-10"/>
+                        </g>
+
+                        <!-- Leaves -->
+                        <g class="tree-leaves">
+                            <!-- Left side leaves -->
+                            <ellipse cx="120" cy="260" rx="15" ry="20" fill="#228B22" class="leaf leaf-1"/>
+                            <ellipse cx="100" cy="200" rx="18" ry="22" fill="#32CD32" class="leaf leaf-2"/>
+                            <ellipse cx="120" cy="150" rx="16" ry="21" fill="#228B22" class="leaf leaf-3"/>
+                            <ellipse cx="140" cy="100" rx="14" ry="19" fill="#32CD32" class="leaf leaf-4"/>
+                            <ellipse cx="110" cy="280" rx="12" ry="16" fill="#3CB371" class="leaf leaf-5"/>
+                            <ellipse cx="130" cy="240" rx="13" ry="17" fill="#2E8B57" class="leaf leaf-6"/>
+
+                            <!-- Right side leaves -->
+                            <ellipse cx="280" cy="260" rx="15" ry="20" fill="#228B22" class="leaf leaf-7"/>
+                            <ellipse cx="300" cy="200" rx="18" ry="22" fill="#32CD32" class="leaf leaf-8"/>
+                            <ellipse cx="280" cy="150" rx="16" ry="21" fill="#228B22" class="leaf leaf-9"/>
+                            <ellipse cx="260" cy="100" rx="14" ry="19" fill="#32CD32" class="leaf leaf-10"/>
+                            <ellipse cx="290" cy="280" rx="12" ry="16" fill="#3CB371" class="leaf leaf-11"/>
+                            <ellipse cx="270" cy="240" rx="13" ry="17" fill="#2E8B57" class="leaf leaf-12"/>
+
+                            <!-- Top leaves -->
+                            <ellipse cx="190" cy="90" rx="15" ry="20" fill="#228B22" class="leaf leaf-13"/>
+                            <ellipse cx="210" cy="90" rx="15" ry="20" fill="#32CD32" class="leaf leaf-14"/>
+                            <ellipse cx="200" cy="70" rx="17" ry="22" fill="#3CB371" class="leaf leaf-15"/>
+                            <ellipse cx="180" cy="110" rx="12" ry="16" fill="#2E8B57" class="leaf leaf-16"/>
+                            <ellipse cx="220" cy="110" rx="12" ry="16" fill="#228B22" class="leaf leaf-17"/>
+                        </g>
+
+                        <!-- Energy Orbs -->
+                        <g class="tree-energy">
+                            <circle cx="200" cy="250" r="5" fill="#FFD700" opacity="0.8" class="energy-orb orb-1"/>
+                            <circle cx="150" cy="200" r="4" fill="#FFA500" opacity="0.7" class="energy-orb orb-2"/>
+                            <circle cx="250" cy="200" r="4" fill="#FFD700" opacity="0.7" class="energy-orb orb-3"/>
+                            <circle cx="200" cy="150" r="6" fill="#FFA500" opacity="0.8" class="energy-orb orb-4"/>
+                            <circle cx="180" cy="300" r="3" fill="#FFD700" opacity="0.6" class="energy-orb orb-5"/>
+                            <circle cx="220" cy="300" r="3" fill="#FFA500" opacity="0.6" class="energy-orb orb-6"/>
+                        </g>
+                    </svg>
+                    <div class="tree-message">
+                        <p>"Like a tree, we grow stronger through our roots of experience and branches of wisdom"</p>
+                    </div>
                 </div>
                 <div class="profile-info">
                     <h3>Professional Memberships</h3>
